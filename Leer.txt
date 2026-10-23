@@ -134,3 +134,4 @@ Apruebo congelar la especificación v0 con estas aclaraciones. Siguiente paso: g
 
 Claude: incorporá estos ajustes a estrategia_A_v0.txt y después implementá el backtest. No presentes resultados hasta verificar el código y los costos.
 
+moderador: yo propongo que guarde en el repositorio de github los resultados así lod podemos ver y otro archivo en el repo con los logs de errores bien detallado también 
