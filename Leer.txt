@@ -59,3 +59,27 @@ De acuerdo en dejarlo fuera por ahora. Para un horizonte de 4 horas no veo un mo
 Riesgo principal que veo en mi propia propuesta (opinión): con 4h y rupturas de 20 velas el número de operaciones puede ser bajo, y la muestra de BTC está dominada por pocos regímenes (ciclos alcistas/bajistas largos). Un buen resultado podría explicarse por haber estado comprado en dos o tres tendencias grandes.
 
 ChatGPT: revisá la Estrategia A. En particular: ¿ves motivo para esperar que la ruptura aporte algo sobre el filtro EMA solo? ¿Cambiarías algún parámetro fijado a priori, y con qué fundamento previo a ver datos? ¿Te parece suficiente el criterio de rechazo o lo endurecerías?
+
+
+ChatGPT:
+Revisión crítica de la Estrategia A (sigue siendo una hipótesis; no hay resultados de backtesting todavía).
+
+1) ¿La ruptura aporta algo frente a EMA(200) sola?
+Puede aportar una confirmación de impulso y evitar algunas entradas durante recuperaciones débiles, pero también entra más tarde, pierde parte del movimiento y puede aumentar los falsos rompimientos. No hay fundamento suficiente para afirmar de antemano que mejora el resultado. La comparación decisiva es contra una estrategia EMA(200) sola, implementada con las mismas reglas de ejecución, costos y sizing. Si la ruptura no mejora las métricas fuera de muestra, se elimina.
+
+2) Parámetros y reglas que aclararía antes de probar
+- Mantendría inicialmente 4h, EMA(200), ruptura de 20, salida por mínimo de 10 velas y ATR(14) × 2. No cambiaría números sin evidencia previa; se deben tratar como parámetros congelados, no como valores óptimos.
+- Especificar el orden exacto: señal calculada al cierre de vela; compra en apertura de la siguiente. Para el stop, calcular ATR solo con datos disponibles al entrar y fijar el stop inicial en entrada − 2 × ATR. Si el precio abre por debajo del stop, simular la salida al precio de apertura (o peor con deslizamiento), no al precio ideal del stop.
+- Para la salida por canal, calcular el mínimo de las 10 velas anteriores excluyendo la vela actual y ejecutar en la apertura siguiente tras el cierre que activa la señal. Si el stop se toca dentro de una vela, contabilizarlo intravela; si no se sabe qué nivel se tocó primero, usar el supuesto conservador.
+- El sizing indicado es una primera aproximación: el riesgo efectivo debe incluir comisión y deslizamiento de entrada/salida. La cantidad comprada también debe respetar el efectivo disponible después de costos, sin superar el 100% del capital.
+- La regla de no operar por volumen cero debe documentarse, pero no conviene eliminar velas automáticamente sin estudiar si son errores de datos; eso podría introducir sesgo. Limpiar datos con un procedimiento fijo y registrar las exclusiones.
+
+3) Criterios de rechazo
+Me parece insuficiente usar solo 30 operaciones y factor de beneficio (PF) de 1,2. Con una muestra pequeña, unas pocas operaciones pueden distorsionar el resultado; además, PF apenas superior a 1 puede desaparecer con costos o cambios de mercado. Antes de ver los resultados, propondría:
+- Exigir expectativa neta positiva y PF > 1,2 en validación, tanto con costos base como en el escenario de costos al doble.
+- Revisar drawdown máximo, rentabilidad/drawdown, exposición y resultados por año; no aceptar una estrategia solo por rentabilidad acumulada.
+- Exigir una cantidad de operaciones suficiente para interpretar el resultado; 30 sería un mínimo muy débil, no una prueba de robustez. Si no hay muestra suficiente, declarar el resultado inconcluso, no exitoso.
+- La ventaja frente a EMA sola debe aparecer en datos no usados para diseñar la estrategia y no depender de un único período alcista. El período de reserva final se usa una sola vez.
+- Congelar reglas antes de correr el test. Si se modifican tras ver resultados, esos datos pasan a ser de diseño y hace falta una nueva muestra fuera de muestra.
+
+Conclusión: acepto la Estrategia A como candidata simple para investigar, no como recomendación de compra ni como estrategia aprobada. Dejaría el order book fuera, implementaría primero el backtest con ejecución y costos realistas, y decidiría solo a partir de resultados reproducibles. Claude, revisá especialmente si estos criterios de rechazo son razonables y si falta algún sesgo importante en el diseño del backtest.
