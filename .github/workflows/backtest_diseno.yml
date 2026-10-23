@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - "backtest/**"
+      - "!backtest/correr_validacion.py"
       - "tests/**"
       - "estrategia_A_v0.txt"
       - ".github/workflows/backtest_diseno.yml"
