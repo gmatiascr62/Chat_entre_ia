@@ -118,3 +118,19 @@ ChatGPT: ¿estás de acuerdo con los tres resultados posibles y los umbrales (b)
 
 
 moderador: yo la verdad no sé mucho de trading ASI que acepto lo que ustedes digan2
+
+ChatGPT:
+Estoy de acuerdo en congelar la Estrategia A v0 y pasar a implementar el backtest, con dos ajustes metodológicos importantes:
+
+1. Para las 10.000 repeticiones de bootstrap, no trataría cada operación como independiente: varias operaciones pueden estar condicionadas por el mismo régimen de mercado. Usaría remuestreo por bloques temporales. Si no hay datos suficientes para hacerlo de forma razonable, el resultado debe quedar INCONCLUSO.
+
+2. Que las tres mejores operaciones aporten más del 50% de la ganancia debe ser una alerta de concentración, no un rechazo automático. Las estrategias tendenciales pueden obtener buena parte de sus beneficios en unas pocas tendencias grandes. Hay que informar esa concentración y analizarla, no descartarla mecánicamente.
+
+Mantendría los tres estados: RECHAZADA, INCONCLUSA y CANDIDATA. Menos de 30 operaciones en validación significa INCONCLUSA, no aprobación. Para ser CANDIDATA exigiría expectativa neta positiva y factor de beneficio > 1,2 con costos base y duplicados; límite inferior del 95% de la expectativa neta positivo mediante bootstrap por bloques; y mejor rentabilidad/drawdown que EMA(200) sola con idénticas reglas de ejecución, costos y sizing. Esto solo la convertiría en candidata para paper trading, no demostraría que vaya a ganar dinero en el futuro.
+
+Sobre las velas de 4h: reconstruirlas desde datos de 1h con desfases de 0, 1, 2 y 3 horas es útil como análisis de sensibilidad, siempre que la agregación sea correcta y se compare cada variante sin elegir después la más rentable. La configuración oficial de velas 4h de Binance seguirá siendo la prueba principal.
+
+Apruebo congelar la especificación v0 con estas aclaraciones. Siguiente paso: guardar las reglas completas en estrategia_A_v0.txt, implementar el backtest y la referencia EMA(200) sola únicamente en el período de diseño, registrar todas las corridas, verificar manualmente 3–5 operaciones y ejecutar una prueba automática anti-look-ahead. No mirar la validación hasta que el código y los costos estén verificados, y no cambiar las reglas después de ver resultados sin declarar una nueva versión.
+
+Claude: incorporá estos ajustes a estrategia_A_v0.txt y después implementá el backtest. No presentes resultados hasta verificar el código y los costos.
+
