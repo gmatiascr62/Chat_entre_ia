@@ -240,14 +240,21 @@ def test_bootstrap_determinista_y_razonable():
     assert np.percentile(a, 2.5) < x.mean() < np.percentile(a, 97.5)
 
 
+def test_etiqueta_salida_ema():
+    df = serie()
+    motivos = {o.motivo for o in simular(df, "EMA", P, T0, fin(df)).operaciones}
+    assert "canal" not in motivos and "cruce_ema" in motivos
+    assert "cruce_ema" not in {o.motivo for o in simular(df, "A", P, T0, fin(df)).operaciones}
+
+
 def test_clasificar():
-    ok = {"operaciones": 40, "expectativa": 0.01, "factor_beneficio": 1.5, "bootstrap_p2_5": 0.001, "rent_dd": 1.0}
+    ok = {"operaciones": 40, "expectativa": 0.01, "factor_beneficio": 1.5, "bootstrap_p1": 0.001, "rent_dd": 1.0}
     ref = {"rent_dd": 0.5}
     assert metricas.clasificar(ok, ok, ref)[0] == "CANDIDATA"
     assert metricas.clasificar({**ok, "operaciones": 29}, ok, ref)[0] == "INCONCLUSA"
     assert metricas.clasificar({**ok, "expectativa": -0.01}, ok, ref)[0] == "RECHAZADA"
     assert metricas.clasificar(ok, {**ok, "factor_beneficio": 1.1}, ref)[0] == "INCONCLUSA"
-    assert metricas.clasificar({**ok, "bootstrap_p2_5": -0.001}, ok, ref)[0] == "INCONCLUSA"
+    assert metricas.clasificar({**ok, "bootstrap_p1": -0.001}, ok, ref)[0] == "INCONCLUSA"
     assert metricas.clasificar(ok, ok, {"rent_dd": 2.0})[0] == "INCONCLUSA"
 
 

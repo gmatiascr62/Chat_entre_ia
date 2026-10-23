@@ -148,7 +148,7 @@ def simular(df: pd.DataFrame, estrategia: str, p: Params, inicio: pd.Timestamp,
     for i in range(i0, n):
         # 1) órdenes pendientes, a la apertura
         if pend_salida and qty > 0:
-            cerrar(i, o[i], "canal")
+            cerrar(i, o[i], "canal" if estrategia == "A" else "cruce_ema")
         if pend_entrada and qty == 0:
             fill = o[i] * (1 + s)
             stop = o[i] - p.k_atr * atr_senal

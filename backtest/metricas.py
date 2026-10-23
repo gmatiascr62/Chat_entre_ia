@@ -8,6 +8,8 @@ MIN_OPERACIONES = 30
 BLOQUE = 5
 REPETICIONES = 10_000
 SEMILLA = 12345
+PERCENTIL_DECISION = 1.0   # ver resultados/validacion_bootstrap.md y estrategia_A_v0.txt, sección 9
+BLOQUE_DIAS = 20
 
 
 def bootstrap_bloques(retornos: np.ndarray, bloque: int = BLOQUE, reps: int = REPETICIONES,
@@ -51,9 +53,18 @@ def resumen(sim: Simulacion) -> dict:
         "concentracion_top3": top3,
         "alerta_concentracion": bool(top3 > 0.5) if total > 0 else False,
         "bootstrap_p2_5": np.nan,
+        "bootstrap_p1": np.nan,
+        "bootstrap_temporal_p1": np.nan,
     }
     if len(ops) >= MIN_OPERACIONES:
-        r["bootstrap_p2_5"] = float(np.percentile(bootstrap_bloques(ret), 2.5))
+        medias = bootstrap_bloques(ret)
+        r["bootstrap_p2_5"] = float(np.percentile(medias, 2.5))
+        r["bootstrap_p1"] = float(np.percentile(medias, PERCENTIL_DECISION))
+    # Informativo: bloques de 20 días de retornos diarios de la equity (incluye los días sin posición)
+    diario = pd.Series(eq, index=sim.fechas).resample("1D").last().dropna().pct_change().dropna().to_numpy()
+    if len(diario) >= 2 * BLOQUE_DIAS:
+        r["bootstrap_temporal_p1"] = float(np.percentile(bootstrap_bloques(diario, bloque=BLOQUE_DIAS),
+                                                         PERCENTIL_DECISION))
     return r
 
 
@@ -74,8 +85,8 @@ def clasificar(base: dict, doble: dict, ref_ema_base: dict) -> tuple[str, list[s
     for nombre, r in (("costos base", base), ("costos dobles", doble)):
         if not (r["expectativa"] > 0 and r["factor_beneficio"] > 1.2):
             motivos.append(f"no cumple expectativa > 0 y FB > 1,2 con {nombre}")
-    if not base["bootstrap_p2_5"] > 0:
-        motivos.append("límite inferior del 95% (bootstrap) ≤ 0")
+    if not base["bootstrap_p1"] > 0:
+        motivos.append(f"percentil {PERCENTIL_DECISION:g} del bootstrap por bloques de operaciones ≤ 0")
     if not base["rent_dd"] > ref_ema_base["rent_dd"]:
         motivos.append("no supera a EMA(200) sola en rentabilidad/drawdown")
     return ("INCONCLUSA", motivos) if motivos else ("CANDIDATA", ["cumple a), b) y c)"])

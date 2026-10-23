@@ -56,8 +56,8 @@ def commit_actual() -> str:
         return "desconocido"
 
 
-def fmt_pct(x):
-    return "n/d" if x is None or (isinstance(x, float) and np.isnan(x)) else f"{x * 100:.2f}%"
+def fmt_pct(x, decimales=2):
+    return "n/d" if x is None or (isinstance(x, float) and np.isnan(x)) else f"{x * 100:.{decimales}f}%"
 
 
 def fmt_num(x):
@@ -69,12 +69,14 @@ def fila(nombre, r):
             f"{fmt_num(r['rent_dd'])} | {r['operaciones']} | {fmt_pct(r['tasa_aciertos'])} | "
             f"{fmt_num(r['factor_beneficio'])} | {fmt_pct(r['expectativa'])} | {fmt_pct(r['exposicion'])} | "
             f"{r['costos_totales']:.0f} | {fmt_pct(r['concentracion_top3'])}"
-            f"{' ⚠' if r['alerta_concentracion'] else ''} | {fmt_pct(r['bootstrap_p2_5'])} |")
+            f"{' ⚠' if r['alerta_concentracion'] else ''} | {fmt_pct(r['bootstrap_p2_5'])} | {fmt_pct(r['bootstrap_p1'])} | "
+            f"{fmt_pct(r['bootstrap_temporal_p1'], 3)} |")
 
 
 ENCABEZADO = ("| Escenario | Rent. neta | CAGR | DD máx | CAGR/DD | Ops | Aciertos | FB | Expectativa/op | "
-              "Exposición | Costos (USDT) | Top-3 / beneficio | Bootstrap p2,5 |\n"
-              "|---|---|---|---|---|---|---|---|---|---|---|---|---|")
+              "Exposición | Costos (USDT) | Top-3 / beneficio | Bootstrap ops p2,5 | Bootstrap ops p1 | "
+              "Bootstrap temporal p1 (diario) |\n"
+              "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|")
 
 
 def operaciones_csv(sim, ruta):
@@ -175,8 +177,11 @@ def main():
           "## Escenarios principales", "", ENCABEZADO]
     md += [fila(k, r) for k, r in res.items()]
     md += ["", "CAGR/DD = CAGR / |drawdown máximo|. Expectativa/op = media del resultado neto de cada operación "
-           "sobre el capital al entrar. Bootstrap p2,5 = límite inferior del 95% de la expectativa (bloques de 5, "
-           "10.000 repeticiones); n/d si hay menos de 30 operaciones. ⚠ = alerta de concentración (> 50%).", "",
+           "sobre el capital al entrar. Bootstrap ops = percentiles 2,5 y 1 de la expectativa por operación "
+           "remuestreando bloques de 5 operaciones (10.000 repeticiones; n/d con menos de 30 operaciones). El p1 es el "
+           "propuesto para decidir (ver resultados/validacion_bootstrap.md). Bootstrap temporal = percentil 1 del retorno "
+           "diario medio de la equity remuestreando bloques de 20 días (solo informativo). "
+           "⚠ = alerta de concentración (> 50%).", "",
            "## Resultado por año (costos base)", "",
            "| Año | " + " | ".join(anual.columns) + " |", "|---|" + "---|" * len(anual.columns)]
     md += [f"| {a} | " + " | ".join(fmt_pct(v) for v in fila_a) + " |" for a, fila_a in anual.iterrows()]
@@ -196,7 +201,8 @@ def main():
                 f"verificación={'OK' if ok else 'FALLA'} | A base: ops={a['operaciones']} "
                 f"rent={fmt_pct(a['rentabilidad_neta'])} DD={fmt_pct(a['dd_max'])} FB={fmt_num(a['factor_beneficio'])} "
                 f"CAGR/DD={fmt_num(a['rent_dd'])} | EMA sola base: ops={e['operaciones']} "
-                f"rent={fmt_pct(e['rentabilidad_neta'])} CAGR/DD={fmt_num(e['rent_dd'])} | "
+                f"rent={fmt_pct(e['rentabilidad_neta'])} CAGR/DD={fmt_num(e['rent_dd'])} | sensibilidad informada, no usada "
+                f"para elegir: velas 4h desde 1h con desfases 0-3h y rupturas {RUPTURAS_SENSIBILIDAD} | "
                 f"corrida automática (GitHub Actions run {os.environ.get('GITHUB_RUN_ID', 'local')})\n")
     log.info("Fin corrida de DISEÑO. Verificación cruzada: %s", "OK" if ok else "FALLA")
     return 0 if ok else 1

@@ -80,15 +80,20 @@ y los datos ya vistos pasan a ser datos de diseño.
 - Concentración: porcentaje del beneficio neto aportado por las 3 mejores operaciones (ALERTA si > 50%,
   no es rechazo automático).
 - Bootstrap por bloques circular sobre la secuencia de resultados por operación (en orden temporal),
-  bloques de 5 operaciones, 10.000 repeticiones, semilla fija 12345. Se informa el percentil 2,5 de la
-  expectativa neta (límite inferior del intervalo del 95%).
+  bloques de 5 operaciones, 10.000 repeticiones, semilla fija 12345. Qué se remuestrea: el resultado neto de
+  cada operación sobre el capital al entrar, en orden de salida. Por qué: el criterio evalúa la expectativa
+  POR OPERACIÓN, y los bloques conservan la dependencia entre operaciones vecinas.
+  Se informan los percentiles 2,5 y 1 de la expectativa neta. UMBRAL DE DECISIÓN ÚNICO: percentil 1
+  (ver "Cambios" al final y resultados/validacion_bootstrap.md).
+- Informativo, no decide: bootstrap temporal de los retornos diarios de la equity (bloques de 20 días,
+  incluye días sin posición), percentil 1 del retorno diario medio.
 
 10. Criterios de clasificación (se aplican en VALIDACIÓN; en diseño solo se informan)
 - INCONCLUSA si hay menos de 30 operaciones (en ese caso tampoco se considera razonable el bootstrap).
 - RECHAZADA si la expectativa neta ≤ 0 o el factor de beneficio ≤ 1 con costos base.
 - CANDIDATA (para paper trading, no para dinero real) solo si se cumple todo:
   a) expectativa neta > 0 y factor de beneficio > 1,2 con costos base Y con costos al doble;
-  b) límite inferior del 95% (bootstrap por bloques) de la expectativa neta > 0;
+  b) percentil 1 del bootstrap por bloques de operaciones de la expectativa neta > 0;
   c) mejor rentabilidad/drawdown que la referencia EMA(200) sola con costos base.
 - Cualquier otro caso: INCONCLUSA.
 - La concentración del beneficio se informa y se analiza, pero no decide la clasificación.
@@ -100,3 +105,14 @@ y los datos ya vistos pasan a ser datos de diseño.
   datos futuros y comprueba que nada anterior cambia, y una reimplementación independiente que recalcula las
   primeras operaciones reales y debe coincidir con el motor.
 - Sensibilidad (solo para ver robustez, no para elegir): ruptura de 10, 15, 20, 30, 40 y 55 velas.
+
+CAMBIOS (se agregan abajo; no se borra el historial)
+- 2026-10-23, Claude: la salida de la referencia EMA(200) sola se etiqueta "cruce_ema" (antes "canal").
+  Solo cambia la etiqueta; ninguna regla.
+- 2026-10-23, Claude, PROPUESTA pendiente de conformidad de ChatGPT (antes de abrir validación): umbral del
+  bootstrap = percentil 1 en lugar de percentil 2,5. Motivo: en datos sintéticos con media verdadera 0
+  (resultados/validacion_bootstrap.md), el percentil 2,5 da "ventaja" falsa en ~5% de los casos con ~40
+  operaciones y sin autocorrelación, no en el 2,5% nominal (el bootstrap de percentiles es demasiado estrecho
+  con muestras chicas). El percentil 1 da ~2,7% en ese caso. La autocorrelación medida en las operaciones de
+  diseño es baja (lag 1 = −0,14, dentro de ±0,20). Se eligió con datos sintéticos, no con resultados de mercado.
+  Las reglas de trading no cambian.
