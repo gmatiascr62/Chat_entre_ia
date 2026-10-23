@@ -5,3 +5,5 @@ Una estrategia que sale de la versión 15 vale menos que una de la versión 1: e
 Formato: fecha | commit | versión | período | verificación cruzada | resultados clave | origen.
 
 2026-10-23 | — | Estrategia A v0 | — | — | Especificación congelada; motor y pruebas implementados. Sin corridas con datos reales todavía. | Claude
+
+2026-10-23 19:43 UTC | commit bbb25a6 | Estrategia A v0 | DISEÑO 2018-01-01..2022-12-31 | verificación=OK | A base: ops=98 rent=48.88% DD=-5.28% FB=2.64 CAGR/DD=1.57 | EMA sola base: ops=150 rent=100.07% CAGR/DD=1.03 | corrida automática (GitHub Actions run 40013635868)

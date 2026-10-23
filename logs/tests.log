@@ -1,0 +1,36 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0 -- /opt/hostedtoolcache/Python/3.12.15/x64/bin/python
+cachedir: .pytest_cache
+rootdir: /home/runner/work/Chat_entre_ia/Chat_entre_ia
+collecting ... collected 28 items
+
+tests/test_motor.py::test_ema_a_mano PASSED                              [  3%]
+tests/test_motor.py::test_atr_wilder_a_mano PASSED                       [  7%]
+tests/test_motor.py::test_canal_excluye_vela_actual PASSED               [ 10%]
+tests/test_motor.py::test_entrada_en_apertura_siguiente_y_stop_con_hueco PASSED [ 14%]
+tests/test_motor.py::test_stop_intravela_y_sizing_con_costos PASSED      [ 17%]
+tests/test_motor.py::test_salida_por_canal_en_apertura_siguiente PASSED  [ 21%]
+tests/test_motor.py::test_tope_de_capital_sin_apalancamiento PASSED      [ 25%]
+tests/test_motor.py::test_bloqueo_por_volumen_cero PASSED                [ 28%]
+tests/test_motor.py::test_costos_dobles_empeoran PASSED                  [ 32%]
+tests/test_motor.py::test_sin_look_ahead[A-500] PASSED                   [ 35%]
+tests/test_motor.py::test_sin_look_ahead[A-1200] PASSED                  [ 39%]
+tests/test_motor.py::test_sin_look_ahead[A-2100] PASSED                  [ 42%]
+tests/test_motor.py::test_sin_look_ahead[EMA-500] PASSED                 [ 46%]
+tests/test_motor.py::test_sin_look_ahead[EMA-1200] PASSED                [ 50%]
+tests/test_motor.py::test_sin_look_ahead[EMA-2100] PASSED                [ 53%]
+tests/test_motor.py::test_recorte_en_fin_ignora_datos_posteriores PASSED [ 57%]
+tests/test_motor.py::test_motor_coincide_con_reimplementacion[1] PASSED  [ 60%]
+tests/test_motor.py::test_motor_coincide_con_reimplementacion[2] PASSED  [ 64%]
+tests/test_motor.py::test_motor_coincide_con_reimplementacion[3] PASSED  [ 67%]
+tests/test_motor.py::test_comprar_y_mantener PASSED                      [ 71%]
+tests/test_motor.py::test_metricas_basicas PASSED                        [ 75%]
+tests/test_motor.py::test_bootstrap_determinista_y_razonable PASSED      [ 78%]
+tests/test_motor.py::test_clasificar PASSED                              [ 82%]
+tests/test_motor.py::test_limpiar_registra_duplicados_y_huecos PASSED    [ 85%]
+tests/test_motor.py::test_agregar_4h[0] PASSED                           [ 89%]
+tests/test_motor.py::test_agregar_4h[1] PASSED                           [ 92%]
+tests/test_motor.py::test_agregar_4h[2] PASSED                           [ 96%]
+tests/test_motor.py::test_agregar_4h[3] PASSED                           [100%]
+
+============================== 28 passed in 1.26s ==============================

@@ -1,0 +1,227 @@
+2026-10-23 19:43:53,354 | INFO    | diseno | correr_diseno:120 | Inicio corrida de DISEÑO | Estrategia A v0 | commit bbb25a6 | datos 2017-08 a 2022-12
+2026-10-23 19:43:53,355 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2017-08.zip
+2026-10-23 19:43:54,188 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2017-09.zip
+2026-10-23 19:43:54,715 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2017-10.zip
+2026-10-23 19:43:55,487 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2017-11.zip
+2026-10-23 19:43:55,781 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2017-12.zip
+2026-10-23 19:43:56,446 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-01.zip
+2026-10-23 19:43:57,019 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-02.zip
+2026-10-23 19:43:57,519 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-03.zip
+2026-10-23 19:43:58,367 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-04.zip
+2026-10-23 19:43:58,657 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-05.zip
+2026-10-23 19:43:59,115 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-06.zip
+2026-10-23 19:43:59,415 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-07.zip
+2026-10-23 19:43:59,768 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-08.zip
+2026-10-23 19:44:00,269 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-09.zip
+2026-10-23 19:44:00,552 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-10.zip
+2026-10-23 19:44:01,282 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-11.zip
+2026-10-23 19:44:01,777 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2018-12.zip
+2026-10-23 19:44:02,489 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-01.zip
+2026-10-23 19:44:02,986 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-02.zip
+2026-10-23 19:44:03,266 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-03.zip
+2026-10-23 19:44:03,546 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-04.zip
+2026-10-23 19:44:04,050 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-05.zip
+2026-10-23 19:44:04,336 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-06.zip
+2026-10-23 19:44:04,835 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-07.zip
+2026-10-23 19:44:05,335 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-08.zip
+2026-10-23 19:44:05,623 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-09.zip
+2026-10-23 19:44:05,940 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-10.zip
+2026-10-23 19:44:06,231 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-11.zip
+2026-10-23 19:44:06,521 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2019-12.zip
+2026-10-23 19:44:06,799 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-01.zip
+2026-10-23 19:44:07,297 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-02.zip
+2026-10-23 19:44:08,017 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-03.zip
+2026-10-23 19:44:08,522 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-04.zip
+2026-10-23 19:44:08,919 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-05.zip
+2026-10-23 19:44:09,420 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-06.zip
+2026-10-23 19:44:10,137 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-07.zip
+2026-10-23 19:44:10,426 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-08.zip
+2026-10-23 19:44:10,843 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-09.zip
+2026-10-23 19:44:11,220 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-10.zip
+2026-10-23 19:44:11,957 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-11.zip
+2026-10-23 19:44:12,679 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2020-12.zip
+2026-10-23 19:44:13,178 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-01.zip
+2026-10-23 19:44:13,683 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-02.zip
+2026-10-23 19:44:13,979 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-03.zip
+2026-10-23 19:44:14,547 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-04.zip
+2026-10-23 19:44:14,826 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-05.zip
+2026-10-23 19:44:15,208 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-06.zip
+2026-10-23 19:44:15,496 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-07.zip
+2026-10-23 19:44:16,202 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-08.zip
+2026-10-23 19:44:16,486 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-09.zip
+2026-10-23 19:44:16,995 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-10.zip
+2026-10-23 19:44:17,498 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-11.zip
+2026-10-23 19:44:18,229 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2021-12.zip
+2026-10-23 19:44:18,530 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2022-01.zip
+2026-10-23 19:44:19,027 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2022-02.zip
+2026-10-23 19:44:19,321 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2022-03.zip
+2026-10-23 19:44:19,826 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2022-04.zip
+2026-10-23 19:44:20,107 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2022-05.zip
+2026-10-23 19:44:20,616 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2022-06.zip
+2026-10-23 19:44:20,909 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2022-07.zip
+2026-10-23 19:44:21,196 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2022-08.zip
+2026-10-23 19:44:21,699 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2022-09.zip
+2026-10-23 19:44:22,209 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2022-10.zip
+2026-10-23 19:44:22,731 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2022-11.zip
+2026-10-23 19:44:23,131 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/4h/BTCUSDT-4h-2022-12.zip
+2026-10-23 19:44:23,627 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2017-08.zip
+2026-10-23 19:44:24,146 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2017-09.zip
+2026-10-23 19:44:24,544 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2017-10.zip
+2026-10-23 19:44:25,142 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2017-11.zip
+2026-10-23 19:44:25,540 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2017-12.zip
+2026-10-23 19:44:26,164 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2018-01.zip
+2026-10-23 19:44:26,997 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2018-02.zip
+2026-10-23 19:44:27,505 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2018-03.zip
+2026-10-23 19:44:28,121 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2018-04.zip
+2026-10-23 19:44:28,512 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2018-05.zip
+2026-10-23 19:44:29,181 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2018-06.zip
+2026-10-23 19:44:29,579 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2018-07.zip
+2026-10-23 19:44:29,983 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2018-08.zip
+2026-10-23 19:44:30,598 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2018-09.zip
+2026-10-23 19:44:31,202 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2018-10.zip
+2026-10-23 19:44:31,492 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2018-11.zip
+2026-10-23 19:44:32,331 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2018-12.zip
+2026-10-23 19:44:33,154 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2019-01.zip
+2026-10-23 19:44:33,773 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2019-02.zip
+2026-10-23 19:44:34,185 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2019-03.zip
+2026-10-23 19:44:34,572 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2019-04.zip
+2026-10-23 19:44:35,189 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2019-05.zip
+2026-10-23 19:44:35,473 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2019-06.zip
+2026-10-23 19:44:36,080 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2019-07.zip
+2026-10-23 19:44:36,483 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2019-08.zip
+2026-10-23 19:44:36,879 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2019-09.zip
+2026-10-23 19:44:37,475 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2019-10.zip
+2026-10-23 19:44:38,077 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2019-11.zip
+2026-10-23 19:44:38,678 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2019-12.zip
+2026-10-23 19:44:39,501 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2020-01.zip
+2026-10-23 19:44:39,891 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2020-02.zip
+2026-10-23 19:44:40,282 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2020-03.zip
+2026-10-23 19:44:40,899 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2020-04.zip
+2026-10-23 19:44:41,513 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2020-05.zip
+2026-10-23 19:44:42,128 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2020-06.zip
+2026-10-23 19:44:42,820 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2020-07.zip
+2026-10-23 19:44:43,431 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2020-08.zip
+2026-10-23 19:44:43,823 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2020-09.zip
+2026-10-23 19:44:44,215 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2020-10.zip
+2026-10-23 19:44:44,728 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2020-11.zip
+2026-10-23 19:44:45,321 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2020-12.zip
+2026-10-23 19:44:45,714 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-01.zip
+2026-10-23 19:44:46,114 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-02.zip
+2026-10-23 19:44:46,728 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-03.zip
+2026-10-23 19:44:47,535 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-04.zip
+2026-10-23 19:44:48,130 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-05.zip
+2026-10-23 19:44:48,647 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-06.zip
+2026-10-23 19:44:49,250 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-07.zip
+2026-10-23 19:44:49,650 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-08.zip
+2026-10-23 19:44:50,475 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-09.zip
+2026-10-23 19:44:50,768 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-10.zip
+2026-10-23 19:44:51,157 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-11.zip
+2026-10-23 19:44:51,757 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2021-12.zip
+2026-10-23 19:44:52,369 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-01.zip
+2026-10-23 19:44:52,997 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-02.zip
+2026-10-23 19:44:53,609 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-03.zip
+2026-10-23 19:44:54,018 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-04.zip
+2026-10-23 19:44:54,689 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-05.zip
+2026-10-23 19:44:55,076 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-06.zip
+2026-10-23 19:44:55,467 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-07.zip
+2026-10-23 19:44:55,855 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-08.zip
+2026-10-23 19:44:56,133 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-09.zip
+2026-10-23 19:44:56,736 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-10.zip
+2026-10-23 19:44:57,553 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-11.zip
+2026-10-23 19:44:58,160 | INFO    | datos | datos:37 | Descargando https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2022-12.zip
+2026-10-23 19:44:58,778 | WARNING | datos | datos:82 | [BTCUSDT 4h] hueco de datos: 1 vela(s) faltante(s) entre 2017-09-06 12:00 UTC y 2017-09-06 20:00 UTC
+2026-10-23 19:44:58,778 | WARNING | datos | datos:82 | [BTCUSDT 4h] hueco de datos: 7 vela(s) faltante(s) entre 2018-02-08 00:00 UTC y 2018-02-09 08:00 UTC
+2026-10-23 19:44:58,778 | WARNING | datos | datos:82 | [BTCUSDT 4h] hueco de datos: 2 vela(s) faltante(s) entre 2018-06-26 00:00 UTC y 2018-06-26 12:00 UTC
+2026-10-23 19:44:58,778 | WARNING | datos | datos:82 | [BTCUSDT 4h] hueco de datos: 1 vela(s) faltante(s) entre 2018-07-04 00:00 UTC y 2018-07-04 08:00 UTC
+2026-10-23 19:44:58,779 | WARNING | datos | datos:82 | [BTCUSDT 4h] hueco de datos: 1 vela(s) faltante(s) entre 2018-11-14 00:00 UTC y 2018-11-14 08:00 UTC
+2026-10-23 19:44:58,779 | WARNING | datos | datos:82 | [BTCUSDT 4h] hueco de datos: 1 vela(s) faltante(s) entre 2019-03-12 00:00 UTC y 2019-03-12 08:00 UTC
+2026-10-23 19:44:58,779 | WARNING | datos | datos:82 | [BTCUSDT 4h] hueco de datos: 2 vela(s) faltante(s) entre 2019-05-15 00:00 UTC y 2019-05-15 12:00 UTC
+2026-10-23 19:44:58,779 | WARNING | datos | datos:82 | [BTCUSDT 4h] hueco de datos: 1 vela(s) faltante(s) entre 2019-08-15 00:00 UTC y 2019-08-15 08:00 UTC
+2026-10-23 19:44:58,779 | WARNING | datos | datos:82 | [BTCUSDT 4h] hueco de datos: 1 vela(s) faltante(s) entre 2020-02-19 08:00 UTC y 2020-02-19 16:00 UTC
+2026-10-23 19:44:58,782 | INFO    | datos | datos:97 | [BTCUSDT 4h] 11760 velas de 2017-08-17 04:00:00+00:00 a 2022-12-31 20:00:00+00:00; duplicadas=0 huecos=9 volumen0=0 inconsistentes=0
+2026-10-23 19:44:58,785 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-09 09:28 UTC
+2026-10-23 19:44:58,785 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-09 10:28 UTC
+2026-10-23 19:44:58,786 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-09 11:28 UTC
+2026-10-23 19:44:58,786 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-09 12:28 UTC
+2026-10-23 19:44:58,786 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-09 13:28 UTC
+2026-10-23 19:44:58,786 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-09 14:28 UTC
+2026-10-23 19:44:58,786 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-09 15:28 UTC
+2026-10-23 19:44:58,786 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-09 16:28 UTC
+2026-10-23 19:44:58,786 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-09 17:28 UTC
+2026-10-23 19:44:58,786 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-09 18:28 UTC
+2026-10-23 19:44:58,786 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-09 19:28 UTC
+2026-10-23 19:44:58,786 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-09 20:28 UTC
+2026-10-23 19:44:58,786 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-09 21:28 UTC
+2026-10-23 19:44:58,786 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-09 22:28 UTC
+2026-10-23 19:44:58,786 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-09 23:28 UTC
+2026-10-23 19:44:58,787 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 00:28 UTC
+2026-10-23 19:44:58,787 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 01:28 UTC
+2026-10-23 19:44:58,787 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 02:28 UTC
+2026-10-23 19:44:58,787 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 03:28 UTC
+2026-10-23 19:44:58,787 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 04:28 UTC
+2026-10-23 19:44:58,787 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 05:28 UTC
+2026-10-23 19:44:58,787 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 06:28 UTC
+2026-10-23 19:44:58,787 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 07:28 UTC
+2026-10-23 19:44:58,787 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 08:28 UTC
+2026-10-23 19:44:58,787 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 09:28 UTC
+2026-10-23 19:44:58,787 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 10:28 UTC
+2026-10-23 19:44:58,787 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 11:28 UTC
+2026-10-23 19:44:58,787 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 12:28 UTC
+2026-10-23 19:44:58,788 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 13:28 UTC
+2026-10-23 19:44:58,788 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 14:28 UTC
+2026-10-23 19:44:58,788 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 15:28 UTC
+2026-10-23 19:44:58,788 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 16:28 UTC
+2026-10-23 19:44:58,788 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 17:28 UTC
+2026-10-23 19:44:58,788 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 18:28 UTC
+2026-10-23 19:44:58,788 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 19:28 UTC
+2026-10-23 19:44:58,788 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 20:28 UTC
+2026-10-23 19:44:58,788 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 21:28 UTC
+2026-10-23 19:44:58,788 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 22:28 UTC
+2026-10-23 19:44:58,788 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-10 23:28 UTC
+2026-10-23 19:44:58,788 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-11 00:28 UTC
+2026-10-23 19:44:58,788 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-11 01:28 UTC
+2026-10-23 19:44:58,788 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-11 02:28 UTC
+2026-10-23 19:44:58,789 | WARNING | datos | datos:76 | [BTCUSDT 1h] vela no alineada a 1h: 2018-02-11 03:28 UTC
+2026-10-23 19:44:58,789 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 7 vela(s) faltante(s) entre 2017-09-06 15:00 UTC y 2017-09-06 23:00 UTC
+2026-10-23 19:44:58,789 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 1 vela(s) faltante(s) entre 2018-01-04 03:00 UTC y 2018-01-04 05:00 UTC
+2026-10-23 19:44:58,790 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 32 vela(s) faltante(s) entre 2018-02-08 00:00 UTC y 2018-02-09 09:28 UTC
+2026-10-23 19:44:58,790 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: -1 vela(s) faltante(s) entre 2018-02-11 03:28 UTC y 2018-02-11 04:00 UTC
+2026-10-23 19:44:58,790 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 10 vela(s) faltante(s) entre 2018-06-26 01:00 UTC y 2018-06-26 12:00 UTC
+2026-10-23 19:44:58,790 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 1 vela(s) faltante(s) entre 2018-06-27 12:00 UTC y 2018-06-27 14:00 UTC
+2026-10-23 19:44:58,791 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 7 vela(s) faltante(s) entre 2018-07-04 00:00 UTC y 2018-07-04 08:00 UTC
+2026-10-23 19:44:58,791 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 3 vela(s) faltante(s) entre 2018-10-19 05:00 UTC y 2018-10-19 09:00 UTC
+2026-10-23 19:44:58,791 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 7 vela(s) faltante(s) entre 2018-11-14 01:00 UTC y 2018-11-14 09:00 UTC
+2026-10-23 19:44:58,791 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 6 vela(s) faltante(s) entre 2019-03-12 01:00 UTC y 2019-03-12 08:00 UTC
+2026-10-23 19:44:58,791 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 10 vela(s) faltante(s) entre 2019-05-15 02:00 UTC y 2019-05-15 13:00 UTC
+2026-10-23 19:44:58,792 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 8 vela(s) faltante(s) entre 2019-08-15 01:00 UTC y 2019-08-15 10:00 UTC
+2026-10-23 19:44:58,792 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 2 vela(s) faltante(s) entre 2019-11-13 01:00 UTC y 2019-11-13 04:00 UTC
+2026-10-23 19:44:58,792 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 2 vela(s) faltante(s) entre 2019-11-25 01:00 UTC y 2019-11-25 04:00 UTC
+2026-10-23 19:44:58,792 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 1 vela(s) faltante(s) entre 2020-02-09 01:00 UTC y 2020-02-09 03:00 UTC
+2026-10-23 19:44:58,793 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 5 vela(s) faltante(s) entre 2020-02-19 11:00 UTC y 2020-02-19 17:00 UTC
+2026-10-23 19:44:58,793 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 1 vela(s) faltante(s) entre 2020-03-04 09:00 UTC y 2020-03-04 11:00 UTC
+2026-10-23 19:44:58,793 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 2 vela(s) faltante(s) entre 2020-04-25 01:00 UTC y 2020-04-25 04:00 UTC
+2026-10-23 19:44:58,793 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 3 vela(s) faltante(s) entre 2020-06-28 01:00 UTC y 2020-06-28 05:00 UTC
+2026-10-23 19:44:58,793 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 1 vela(s) faltante(s) entre 2020-11-30 05:00 UTC y 2020-11-30 07:00 UTC
+2026-10-23 19:44:58,794 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 3 vela(s) faltante(s) entre 2020-12-21 14:00 UTC y 2020-12-21 18:00 UTC
+2026-10-23 19:44:58,794 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 1 vela(s) faltante(s) entre 2020-12-25 01:00 UTC y 2020-12-25 03:00 UTC
+2026-10-23 19:44:58,794 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 1 vela(s) faltante(s) entre 2021-02-11 03:00 UTC y 2021-02-11 05:00 UTC
+2026-10-23 19:44:58,794 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 1 vela(s) faltante(s) entre 2021-03-06 01:00 UTC y 2021-03-06 03:00 UTC
+2026-10-23 19:44:58,794 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 2 vela(s) faltante(s) entre 2021-04-20 01:00 UTC y 2021-04-20 04:00 UTC
+2026-10-23 19:44:58,795 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 3 vela(s) faltante(s) entre 2021-04-25 04:00 UTC y 2021-04-25 08:00 UTC
+2026-10-23 19:44:58,795 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 4 vela(s) faltante(s) entre 2021-08-13 01:00 UTC y 2021-08-13 06:00 UTC
+2026-10-23 19:44:58,795 | WARNING | datos | datos:82 | [BTCUSDT 1h] hueco de datos: 2 vela(s) faltante(s) entre 2021-09-29 06:00 UTC y 2021-09-29 09:00 UTC
+2026-10-23 19:44:58,796 | WARNING | datos | datos:87 | [BTCUSDT 1h] vela con volumen 0: 2019-06-07 21:00 UTC
+2026-10-23 19:44:58,796 | WARNING | datos | datos:87 | [BTCUSDT 1h] vela con volumen 0: 2020-12-21 14:00 UTC
+2026-10-23 19:44:58,796 | WARNING | datos | datos:87 | [BTCUSDT 1h] vela con volumen 0: 2021-02-11 03:00 UTC
+2026-10-23 19:44:58,798 | INFO    | datos | datos:97 | [BTCUSDT 1h] 46982 velas de 2017-08-17 04:00:00+00:00 a 2022-12-31 23:00:00+00:00; duplicadas=0 huecos=28 volumen0=3 inconsistentes=0
+2026-10-23 19:44:59,387 | INFO    | diseno | correr_diseno:142 | A base: {'rentabilidad_neta': np.float64(0.488775), 'cagr': np.float64(0.082864), 'dd_max': -0.052829, 'rent_dd': np.float64(1.568529), 'operaciones': 98, 'tasa_aciertos': 0.418367, 'factor_beneficio': np.float64(2.64388), 'expectativa': 0.004199, 'exposicion': 0.298446, 'costos_totales': np.float64(526.634935), 'concentracion_top3': np.float64(0.476266), 'alerta_concentracion': False, 'bootstrap_p2_5': 0.001696}
+2026-10-23 19:44:59,402 | INFO    | diseno | correr_diseno:142 | EMA(200) sola base: {'rentabilidad_neta': np.float64(1.000745), 'cagr': np.float64(0.14882), 'dd_max': -0.144497, 'rent_dd': np.float64(1.02992), 'operaciones': 150, 'tasa_aciertos': 0.146667, 'factor_beneficio': np.float64(3.432957), 'expectativa': 0.005512, 'exposicion': 0.484735, 'costos_totales': np.float64(909.279248), 'concentracion_top3': np.float64(1.021494), 'alerta_concentracion': True, 'bootstrap_p2_5': -0.000339}
+2026-10-23 19:44:59,402 | INFO    | diseno | correr_diseno:142 | Comprar y mantener base: {'rentabilidad_neta': np.float64(0.202484), 'cagr': np.float64(0.037575), 'dd_max': -0.814172, 'rent_dd': np.float64(0.046151), 'operaciones': 1, 'tasa_aciertos': 1.0, 'factor_beneficio': inf, 'expectativa': 0.202484, 'exposicion': 1.0, 'costos_totales': np.float64(33.040842), 'concentracion_top3': np.float64(1.0), 'alerta_concentracion': True, 'bootstrap_p2_5': nan}
+2026-10-23 19:44:59,411 | INFO    | diseno | correr_diseno:142 | A costos x2: {'rentabilidad_neta': np.float64(0.380447), 'cagr': np.float64(0.066622), 'dd_max': -0.054022, 'rent_dd': np.float64(1.233241), 'operaciones': 98, 'tasa_aciertos': 0.377551, 'factor_beneficio': np.float64(2.307441), 'expectativa': 0.0034, 'exposicion': 0.298446, 'costos_totales': np.float64(921.250282), 'concentracion_top3': np.float64(0.519534), 'alerta_concentracion': True, 'bootstrap_p2_5': 0.001163}
+2026-10-23 19:44:59,424 | INFO    | diseno | correr_diseno:142 | EMA(200) sola costos x2: {'rentabilidad_neta': np.float64(0.756253), 'cagr': np.float64(0.119254), 'dd_max': -0.142638, 'rent_dd': np.float64(0.836057), 'operaciones': 150, 'tasa_aciertos': 0.146667, 'factor_beneficio': np.float64(2.815522), 'expectativa': 0.004462, 'exposicion': 0.484735, 'costos_totales': np.float64(1545.456301), 'concentracion_top3': np.float64(1.128175), 'alerta_concentracion': True, 'bootstrap_p2_5': -0.000701}
+2026-10-23 19:44:59,425 | INFO    | diseno | correr_diseno:142 | Comprar y mantener costos x2: {'rentabilidad_neta': np.float64(0.198882), 'cagr': np.float64(0.036953), 'dd_max': -0.814172, 'rent_dd': np.float64(0.045387), 'operaciones': 1, 'tasa_aciertos': 1.0, 'factor_beneficio': inf, 'expectativa': 0.198882, 'exposicion': 1.0, 'costos_totales': np.float64(65.980705), 'concentracion_top3': np.float64(1.0), 'alerta_concentracion': True, 'bootstrap_p2_5': nan}
+2026-10-23 19:44:59,432 | INFO    | diseno | correr_diseno:148 | Velas 4h desde 1h con desfase 0h: 11760 velas, 57 anómalas
+2026-10-23 19:44:59,626 | INFO    | diseno | correr_diseno:148 | Velas 4h desde 1h con desfase 1h: 11762 velas, 54 anómalas
+2026-10-23 19:44:59,823 | INFO    | diseno | correr_diseno:148 | Velas 4h desde 1h con desfase 2h: 11761 velas, 49 anómalas
+2026-10-23 19:45:00,014 | INFO    | diseno | correr_diseno:148 | Velas 4h desde 1h con desfase 3h: 11762 velas, 63 anómalas
+2026-10-23 19:45:00,957 | INFO    | diseno | correr_diseno:201 | Fin corrida de DISEÑO. Verificación cruzada: OK
