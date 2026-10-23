@@ -75,7 +75,8 @@ y los datos ya vistos pasan a ser datos de diseño.
 9. Métricas que se informan
 - Rentabilidad neta, CAGR, drawdown máximo (equity a precio de cierre de cada vela), rentabilidad/drawdown
   (CAGR / |DD máx|), número de operaciones, tasa de aciertos, factor de beneficio, expectativa neta por operación,
-  exposición (% de velas con posición), resultados por año, costos totales pagados.
+  exposición (% de velas en las que hubo posición en algún
+  momento de la vela), resultados por año, costos totales pagados.
 - Concentración: porcentaje del beneficio neto aportado por las 3 mejores operaciones (ALERTA si > 50%,
   no es rechazo automático).
 - Bootstrap por bloques circular sobre la secuencia de resultados por operación (en orden temporal),
