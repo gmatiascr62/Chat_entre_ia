@@ -195,3 +195,19 @@ ChatGPT: ¿ves algún problema en estos resultados o en la verificación antes d
 Moderador: la decisión de abrir la validación es tuya. Cuando lo apruebes, preparo el script de validación (mismo motor, sin cambios en las reglas).
 
 Claude (corrección a mi intervención anterior, punto 2): escribí que las 2 mejores operaciones de EMA sola aportan más del 100% del beneficio neto. El dato correcto es que las 2 mejores aportan el 93% y las 3 mejores el 102%. La conclusión no cambia: el resultado de EMA sola depende de muy pocas tendencias.
+
+ChatGPT:
+Leí los resultados de diseño y la verificación. Mi decisión es: todavía NO abriría la validación; primero cerraría unos controles pendientes. No veo motivo para cambiar las reglas de entrada/salida a partir de estos números, pero sí para asegurar que el proceso que los produjo quede completamente auditado.
+
+1. Lo positivo: las 28 pruebas sintéticas pasan y las 98 operaciones coinciden entre dos implementaciones independientes. Eso es buena evidencia de consistencia, pero no demuestra por sí solo que ambas implementaciones reflejen correctamente todas las reglas. Solo se revisaron manualmente dos operaciones (1 y 4), aunque habíamos acordado revisar entre 3 y 5. Revisaría al menos una operación más, idealmente un caso con stop intravela o hueco de apertura y otro con salida por canal.
+
+2. Antes de validar, corregiría el etiquetado de las salidas de EMA(200) sola (aparecen como "canal"), tal como Claude ya detectó. Aunque diga que no afecta a los números, hay que corregirlo y volver a ejecutar las pruebas y el backtest de diseño para comprobar que no cambió ninguna métrica ni operación. Después, dejar registrado el commit exacto del código que se considera congelado.
+
+3. Bootstrap: usar bloques de cinco operaciones consecutivas es mejor que remuestrear operaciones totalmente independientes, pero no garantiza conservar la dependencia temporal, porque las operaciones tienen duraciones distintas y puede haber largos períodos sin operaciones. Antes de interpretar el intervalo como evidencia estadística fuerte, documentemos exactamente qué se remuestrea y por qué. Preferiría remuestrear bloques de retornos de equity por tiempo, o justificar y validar el método por bloques de operaciones. Además, fijemos un único umbral: percentil 5 para un límite inferior unilateral del 95%, o percentil 2,5 si se pretende usar el límite inferior de un intervalo bilateral del 95%. No los mezclemos.
+
+4. Los resultados de diseño son descriptivos, no una aprobación. Que A obtenga mejor CAGR/drawdown que EMA sola entre 2018 y 2022 es alentador como hipótesis, pero el hecho de que buena parte del beneficio se concentre en 2019–2021 merece quedar destacado. El uso promedio de solo ~14% del capital también debe mostrarse junto a la rentabilidad; no extrapolar estos resultados como si el capital estuviera siempre invertido. La comparación principal sigue siendo A contra EMA sola con idéntico sizing, costos y reglas de ejecución.
+
+5. No afirmaría todavía que la robustez está demostrada por probar rupturas de 10 a 55 velas y desfases horarios. Esas pruebas son análisis de sensibilidad útiles, pero deben figurar en el registro de experimentos y no servir para escoger la variante más rentable. La especificación oficial sigue siendo la v0 congelada y las velas oficiales de Binance 4h.
+
+Por tanto, Claude: corregí el etiquetado de salidas, agregá la revisión manual pendiente y dejá inequívocamente documentado el método y el umbral del bootstrap. Volvé a correr tests y backtest de diseño y compará los artefactos con la corrida anterior. Si los resultados y operaciones no cambian salvo el etiquetado, y todo queda registrado, entonces sí apruebo abrir la validación 2023–2024 una sola vez, sin modificar reglas. La reserva 2025–actualidad sigue cerrada. No presentar estos resultados como recomendación de inversión.
+
