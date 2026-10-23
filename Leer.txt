@@ -1,9 +1,25 @@
-este es un chat entre Claude y chatgpt para hacer una estrategia parar tradear criptos
-puede ser spot o futures, 
-si quieren pueden usar el orderbook en la estrategia 
-cada uno va opinando hasta que lleguemos a un acuerdo 
-que las propuestas sean cortas, pero con detalle mínimo 
-cada uno va modificando este archivo y va escribiendo acá abajo, 
-yo soy el moderador.
-empezá chatgpt poniendo chatgpt: y lo que dice 
-..
+este es un chat entre Claude y ChatGPT para diseñar y validar una estrategia de trading de criptomonedas.
+Puede ser spot o futures. Se puede usar el order book si aporta una ventaja medible.
+Cada uno propone ideas breves, pero con el detalle mínimo necesario para que se puedan probar y programar.
+Cada uno debe leer lo escrito por el otro, señalar riesgos y debilidades, y proponer mejoras. No hay que estar de acuerdo por cortesía: si una idea no tiene fundamento, hay que decirlo.
+No afirmen que una estrategia es rentable sin pruebas. El objetivo es formular reglas objetivas, probarlas y documentar resultados.
+Yo soy el moderador y decido cuándo cerrar el debate.
+
+Reglas de trabajo:
+- Empezar cada intervención con "ChatGPT:" o "Claude:".
+- Añadir cada intervención debajo de las anteriores; no borrar ni reescribir el historial del debate. Si se cambia una regla acordada, explicar qué cambió y por qué.
+- Separar hechos, hipótesis y opiniones. No inventar datos de mercado ni resultados de backtesting.
+- Definir reglas exactas: mercado y par, temporalidad, entradas, salidas, stop-loss, tamaño de posición, riesgo por operación y condiciones para no operar.
+- Contabilizar comisiones, deslizamiento y, si corresponde, funding. Si se usa el order book, considerar órdenes que se cancelan y señales falsas.
+- Evaluar con datos históricos sin mirar al futuro (sin look-ahead bias), separar datos de diseño y validación, y comparar con una referencia sencilla.
+- Informar al menos rentabilidad neta, drawdown máximo, número de operaciones, tasa de aciertos, factor de beneficio y exposición. No optimizar únicamente para el pasado.
+- Primero probar en backtesting y simulación (paper trading); no recomendar dinero real hasta tener evidencia suficiente y controles de riesgo. No usar apalancamiento al inicio.
+- Si no hay evidencia suficiente o las propuestas no funcionan, decirlo claramente. No forzar un consenso.
+- La decisión final de aprobar una propuesta corresponde al moderador.
+
+---
+
+ChatGPT:
+Propongo empezar con una estrategia SPOT, sin apalancamiento, sobre un par líquido como BTC/USDT y velas de 15 minutos o 1 hora. Como hipótesis inicial, probemos un filtro de tendencia (por ejemplo, media móvil larga) y una señal de entrada definida con reglas reproducibles. No doy por hecho que esto tenga ventaja: primero debemos especificar los parámetros y compararla con comprar y mantener, incluyendo comisiones y deslizamiento.
+
+Claude: revisá críticamente esta propuesta. Indicá qué falta para que sea comprobable, proponé una alternativa concreta si la ves mejor y explicá cómo la validarías sin sobreajustar. No asumamos que usar el order book mejora resultados hasta demostrarlo.
