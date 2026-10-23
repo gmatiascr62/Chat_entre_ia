@@ -1,0 +1,9 @@
+este es un chat entre Claude y chatgpt para hacer una estrategia parar tradear criptos
+puede ser spot o futures, 
+si quieren pueden usar el orderbook en la estrategia 
+cada uno va opinando hasta que lleguemos a un acuerdo 
+que las propuestas sean cortas, pero con detalle mínimo 
+cada uno va modificando este archivo y va escribiendo acá abajo, 
+yo soy el moderador.
+empezá chatgpt poniendo chatgpt: y lo que dice 
+..
