@@ -23,3 +23,39 @@ ChatGPT:
 Propongo empezar con una estrategia SPOT, sin apalancamiento, sobre un par líquido como BTC/USDT y velas de 15 minutos o 1 hora. Como hipótesis inicial, probemos un filtro de tendencia (por ejemplo, media móvil larga) y una señal de entrada definida con reglas reproducibles. No doy por hecho que esto tenga ventaja: primero debemos especificar los parámetros y compararla con comprar y mantener, incluyendo comisiones y deslizamiento.
 
 Claude: revisá críticamente esta propuesta. Indicá qué falta para que sea comprobable, proponé una alternativa concreta si la ves mejor y explicá cómo la validarías sin sobreajustar. No asumamos que usar el order book mejora resultados hasta demostrarlo.
+
+Claude:
+Coincido con el punto de partida (spot, sin apalancamiento, BTC/USDT, comparar con comprar y mantener), pero tal como está la propuesta no se puede probar todavía. Separo críticas, alternativa y plan de validación.
+
+1) Qué falta para que sea comprobable
+- "Media móvil larga" y "una señal de entrada" no son reglas: falta tipo de media, período, señal exacta, salida, stop-loss, tamaño de posición y condiciones para no operar.
+- "15 minutos o 1 hora": hay que elegir una temporalidad antes de mirar resultados. Probar ambas y quedarse con la mejor ya es optimizar sobre el pasado.
+- Costos (aritmética, no dato de mercado): con 0,1% de comisión por lado más algo de deslizamiento, cada operación cuesta del orden de 0,25% ida y vuelta. En 15 minutos una estrategia de tendencia genera muchas operaciones y señales falsas; es fácil que los costos se coman cualquier ventaja. Por eso propongo una temporalidad más lenta.
+- La referencia: una estrategia long-only con filtro de tendencia pasa parte del tiempo fuera del mercado, así que compararla solo contra comprar y mantener en rentabilidad total es engañoso. Hay que comparar también rentabilidad ajustada por drawdown y por exposición.
+
+2) Alternativa concreta (Estrategia A, v0) — HIPÓTESIS, no afirmo que sea rentable
+- Mercado: BTC/USDT spot (datos públicos de velas de Binance). Sin apalancamiento, solo compras.
+- Temporalidad: velas de 4 horas. Decisiones solo al cierre de vela; ejecución al precio de apertura de la vela siguiente.
+- Filtro de tendencia: cierre > EMA(200) de 4h.
+- Entrada: cierre > máximo de las 20 velas anteriores (ruptura Donchian, sin incluir la vela actual) y filtro activo.
+- Salida: cierre < mínimo de las 10 velas anteriores, o stop-loss.
+- Stop-loss inicial: precio de entrada − 2 × ATR(14). Si en una misma vela se tocan stop y otro nivel, asumir el peor caso.
+- Tamaño: arriesgar 0,5% del capital por operación = capital × 0,005 / (entrada − stop), con tope del 100% del capital disponible (nunca apalancado).
+- No operar: si faltan velas o hay velas con volumen 0 en la ventana de cálculo, o durante paradas del exchange.
+- Costos en el escenario base: 0,1% de comisión por lado + 0,05% de deslizamiento por lado. Escenario de estrés: costos al doble. Si la estrategia solo funciona con el escenario base, no la considero robusta.
+- Parámetros fijados a priori: 20 / 10 / EMA 200 / ATR 14 / k = 2. No se eligen por resultado.
+
+3) Cómo validarla sin sobreajustar
+- División de datos: diseño 2018-01-01 a 2022-12-31; validación 2023-01-01 a 2024-12-31; reserva final 2025-01-01 a hoy, que se usa una sola vez al final.
+- Sin look-ahead: indicadores calculados solo con velas cerradas; orden en la apertura siguiente; nada de normalizaciones con datos de todo el período.
+- Referencias: (a) comprar y mantener BTC; (b) solo el filtro (comprado cuando cierre > EMA 200, fuera en caso contrario), para ver si la ruptura aporta algo sobre el filtro; (c) entradas aleatorias con la misma cantidad de operaciones y duración media (simulación Monte Carlo), para ver si las señales superan al azar.
+- Métricas: rentabilidad neta, drawdown máximo, número de operaciones, tasa de aciertos, factor de beneficio, exposición, rentabilidad/drawdown, y resultados año por año.
+- Robustez: barrer cada parámetro en un rango (por ejemplo 10–55 para la ruptura) solo para comprobar que el resultado no depende de un valor puntual, no para elegir el mejor. Repetir en ETH/USDT sin reoptimizar.
+- Criterio de rechazo definido ahora, antes de ver resultados: se descarta si en validación tiene menos de 30 operaciones, factor de beneficio neto < 1,2, o no mejora a la referencia (b) en rentabilidad/drawdown.
+
+4) Order book
+De acuerdo en dejarlo fuera por ahora. Para un horizonte de 4 horas no veo un motivo para que aporte en la señal, y el histórico de libro de órdenes completo es caro y difícil de conseguir limpio. Lo retomaría solo para la ejecución (órdenes límite vs. de mercado) una vez que haya una señal que sobreviva a la validación.
+
+Riesgo principal que veo en mi propia propuesta (opinión): con 4h y rupturas de 20 velas el número de operaciones puede ser bajo, y la muestra de BTC está dominada por pocos regímenes (ciclos alcistas/bajistas largos). Un buen resultado podría explicarse por haber estado comprado en dos o tres tendencias grandes.
+
+ChatGPT: revisá la Estrategia A. En particular: ¿ves motivo para esperar que la ruptura aporte algo sobre el filtro EMA solo? ¿Cambiarías algún parámetro fijado a priori, y con qué fundamento previo a ver datos? ¿Te parece suficiente el criterio de rechazo o lo endurecerías?
