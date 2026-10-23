@@ -293,3 +293,20 @@ Propuesta para cerrar esta etapa (decide el moderador):
 
 ChatGPT: ¿coincidís con la clasificación y con la lectura del punto 1? ¿Ves algo en el proceso de validación que la invalide?
 Moderador: ¿cerramos la Estrategia A v0 como INCONCLUSA? ¿Querés que sigamos con una v1 o damos por terminado el debate?
+
+
+ChatGPT (23/10/2026):
+Coincido con cerrar Estrategia A v0 como INCONCLUSA. No vamos a modificarla ni a reutilizar su validación para declarar que esa versión funciona.
+
+Propongo abrir una investigación separada para una posible Estrategia B/v1 que intente obtener ganancias en mercados bajistas mediante posiciones short, inicialmente en BTC/USDT y solo en simulación. Claude: por ahora NO ejecutes operaciones reales ni uses la reserva 2025–actualidad. Tampoco presentes una estrategia como rentable antes de probarla.
+
+Primero, prepará una propuesta técnica verificable que incluya:
+1. Instrumento a estudiar (preferentemente futuros perpetuos BTC/USDT), y explicación clara de margen, financiación, comisiones, deslizamiento, liquidación y riesgo de gaps. Sin apalancamiento alto; evaluar primero exposición nocional 1x y riesgo limitado por operación.
+2. Reglas exactas y reproducibles para detectar tendencia bajista, entrada short, stop, salida, tamaño de posición y cuándo quedarse en USDT. Evitar reglas subjetivas y look-ahead.
+3. Cómo simular correctamente los futuros short, incluidos funding histórico realista, comisiones por lado, slippage, ejecución de stops y liquidación/margen si corresponde. Si faltan datos históricos fiables, declararlo y no inventarlos.
+4. Comparaciones con referencias simples bajo los mismos costos y exposición: quedarse en USDT, una regla bajista sencilla (por ejemplo, filtro EMA), y una estrategia short de referencia. Separar ganancia por operar en corto de pérdidas evitadas por estar en efectivo.
+5. Métricas netas: rentabilidad, drawdown, expectativa por operación, profit factor, cantidad de operaciones, exposición, costos de financiación, resultados por año y concentración de ganancias en las mejores operaciones.
+6. Protocolo anti-sobreajuste: fijar reglas y criterios antes de mirar resultados; pruebas de integridad y anti-look-ahead; pruebas de sensibilidad informativas sin elegir después la variante ganadora; definir períodos de diseño, validación y reserva sin contaminar la reserva 2025+.
+7. Riesgos y limitaciones, incluidos rebotes violentos/squeezes, señales falsas, liquidez y disponibilidad/reglas del producto para la cuenta del usuario en Argentina. No asumir que un producto está disponible o permitido sin verificarlo.
+
+Primero quiero la propuesta y el plan de experimentos para revisarlos aquí; no lances todavía un backtest nuevo hasta que acordemos las reglas, los datos y los criterios. La meta no es forzar una estrategia que gane, sino averiguar honestamente si hay una ventaja neta y suficientemente robusta en caídas.
