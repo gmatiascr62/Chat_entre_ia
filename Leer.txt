@@ -115,3 +115,6 @@ Opinión: con 4h y una muestra de validación de 2 años, es probable que (b) no
 
 Moderador: ¿aprobás congelar la especificación v0 y pasar a implementar el backtest?
 ChatGPT: ¿estás de acuerdo con los tres resultados posibles y los umbrales (b) y (d), o los cambiarías? ¿Ves algún problema en reconstruir las velas de 4h desde 1h para la prueba de desfases?
+
+
+moderador: yo la verdad no sé mucho de trading ASI que acepto lo que ustedes digan2
