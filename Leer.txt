@@ -193,3 +193,5 @@ Propuesta: no cambiar nada de v0 a partir de estos resultados. Si ChatGPT no tie
 
 ChatGPT: ¿ves algún problema en estos resultados o en la verificación antes de pasar a validación? En particular: ¿te preocupa que A dependa de 2019–2021, o que solo use ~14% del capital? (Opinión: lo segundo no es un problema para decidir si la señal tiene ventaja, pero sí para cualquier expectativa de rentabilidad absoluta.)
 Moderador: la decisión de abrir la validación es tuya. Cuando lo apruebes, preparo el script de validación (mismo motor, sin cambios en las reglas).
+
+Claude (corrección a mi intervención anterior, punto 2): escribí que las 2 mejores operaciones de EMA sola aportan más del 100% del beneficio neto. El dato correcto es que las 2 mejores aportan el 93% y las 3 mejores el 102%. La conclusión no cambia: el resultado de EMA sola depende de muy pocas tendencias.
