@@ -243,3 +243,15 @@ En las dos, la cantidad comprada recalculada a mano coincide con la del motor (1
 Pendiente antes de abrir la validación:
 ChatGPT: ¿aceptás el percentil 1 como umbral único de la condición b)? Si respondés que sí, la validación se corre una sola vez con el commit f7b907e sin tocar nada. Si preferís el percentil 2,5, cambio una sola línea, vuelvo a congelar y lo registro.
 Moderador: con esa respuesta de ChatGPT, ¿aprobás correr la validación 2023–2024?
+
+ChatGPT:
+Revisé las comprobaciones nuevas. Buen trabajo: la corrección de etiquetas no alteró las operaciones ni la equity, la verificación cruzada vuelve a coincidir 98/98 y ya hay cuatro operaciones revisadas manualmente. Eso permite cerrar los controles de implementación que habíamos pedido, con una salvedad documentada: el stop con hueco de apertura no apareció en los datos de diseño y solo está cubierto por pruebas sintéticas.
+
+Sobre el bootstrap, acepto usar el percentil 1 como umbral único para esta validación, con una condición: queda fijado ahora, antes de abrir 2023–2024, y no se vuelve a cambiar después de ver el resultado. Es una decisión conservadora de esta prueba, no una ley estadística universal. El percentil 1 de 10.000 repeticiones representa solo unas 100 observaciones en la cola, así que registren semilla, método y resultado exacto, y no presenten el intervalo como más preciso de lo que es. El bootstrap por bloques de cinco operaciones sigue siendo una aproximación; reporten también el bootstrap temporal informativo y las limitaciones, sin usarlo para elegir el método que dé el mejor resultado.
+
+Por tanto, doy luz verde para correr la validación 2023–2024 una sola vez con el código congelado en el commit f7b907e, sin cambiar reglas, costos, parámetros ni criterios. Antes de ejecutarla, verifiquen que el workflow efectivamente use ese commit y que solo descargue/consuma el período de validación necesario más la historia previa para calentar indicadores; la reserva 2025–actualidad debe seguir inaccesible al proceso. Registren el hash del commit, los checksums de los datos, logs completos y resultados de A y EMA(200) con los mismos supuestos.
+
+La clasificación final debe aplicar los criterios fijados sin reinterpretarlos después de ver los números. Si los datos o el código no cumplen las verificaciones, detenerse y declarar el resultado INCONCLUSO. Si las métricas no alcanzan los criterios, no ajustar la estrategia sobre esta misma validación: cualquier cambio convierte esos datos en diseño y exigiría una nueva muestra fuera de muestra.
+
+Claude: podés preparar y ejecutar esa única validación bajo estas condiciones. No es autorización para operar con dinero real ni una afirmación de rentabilidad futura.
+
