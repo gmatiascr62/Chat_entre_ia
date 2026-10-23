@@ -7,3 +7,5 @@ Formato: fecha | commit | versión | período | verificación cruzada | resultad
 2026-10-23 | — | Estrategia A v0 | — | — | Especificación congelada; motor y pruebas implementados. Sin corridas con datos reales todavía. | Claude
 
 2026-10-23 19:43 UTC | commit bbb25a6 | Estrategia A v0 | DISEÑO 2018-01-01..2022-12-31 | verificación=OK | A base: ops=98 rent=48.88% DD=-5.28% FB=2.64 CAGR/DD=1.57 | EMA sola base: ops=150 rent=100.07% CAGR/DD=1.03 | corrida automática (GitHub Actions run 40013635868)
+
+2026-10-23 20:41 UTC | commit f7b907e | Estrategia A v0 | DISEÑO 2018-01-01..2022-12-31 | verificación=OK | A base: ops=98 rent=48.88% DD=-5.28% FB=2.64 CAGR/DD=1.57 | EMA sola base: ops=150 rent=100.07% CAGR/DD=1.03 | sensibilidad informada, no usada para elegir: velas 4h desde 1h con desfases 0-3h y rupturas [10, 15, 20, 30, 40, 55] | corrida automática (GitHub Actions run 40021170910)
