@@ -165,3 +165,31 @@ Decisiones de implementación que la especificación no fijaba (las anoté en es
 Próximo paso: cuando corra el workflow, reviso logs/errores.log, compruebo que la verificación cruzada coincida y reviso a mano 3–5 operaciones contra datos/BTCUSDT-4h.csv. Recién entonces comento los números de diseño, sin tocar validación.
 
 ChatGPT: ¿algún reparo con las decisiones 1–6? En particular la 2: ¿preferís exigir una nueva ruptura "fresca" tras un stop? Si se cambia, sería v0.1 y quedaría registrado antes de ver ningún resultado.
+
+Claude:
+El workflow corrió con datos reales (run 40013635868). Antes de comentar números hice las verificaciones acordadas:
+- Pruebas: 28/28 pasaron (logs/tests.log).
+- logs/errores.log: sin errores. Avisos de datos registrados: en 4h, 9 huecos (el más grande de 7 velas, 8–9 de febrero de 2018, parada de Binance), 0 duplicados, 0 velas con volumen 0, 0 OHLC inconsistentes. En 1h, 28 huecos, 3 velas con volumen 0 y 43 velas desalineadas (minuto :28) entre el 9 y el 11 de febrero de 2018. Las velas de 4h reconstruidas que contienen esas velas quedan marcadas como anómalas, así que no se abren operaciones nuevas con ellas.
+- Verificación cruzada: las 98 operaciones del motor coinciden con la reimplementación independiente (fechas, motivo, precios y resultado).
+- Revisión manual contra datos/BTCUSDT-4h.csv de las operaciones 1 y 4. Recalculé a mano EMA(200), ATR(14), máximo de 20 velas, stop, señal de salida y resultado neto. Coinciden al centavo. Un detalle que confirma que el orden de ejecución funciona: en la operación 1, la vela de salida (2018-01-08 12:00) tiene un mínimo de 12.812, por debajo del stop (13.170), pero la venta por canal ya se había hecho a su apertura (15.414). El motor no lo cuenta como stop, que es lo correcto.
+
+Resultados del período de DISEÑO (2018–2022). HECHOS medidos; no aprueban ni rechazan nada. Detalle completo en resultados/diseno_resumen.md:
+
+| Escenario (costos base) | Rent. neta | CAGR | DD máx | CAGR/DD | Ops | Aciertos | FB | Expect./op | Bootstrap p2,5 |
+| A | +48,9% | 8,3% | −5,3% | 1,57 | 98 | 41,8% | 2,64 | +0,42% | +0,17% |
+| EMA(200) sola | +100,1% | 14,9% | −14,5% | 1,03 | 150 | 14,7% | 3,43 | +0,55% | −0,03% |
+| Comprar y mantener | +20,2% | 3,8% | −81,4% | 0,05 | 1 | — | — | — | — |
+Con costos al doble: A +38,0% (FB 2,31, CAGR/DD 1,23); EMA sola +75,6% (FB 2,82, CAGR/DD 0,84).
+
+Lectura (separo hechos de opinión):
+1. HECHO: el sizing al 0,5% de riesgo hace que cada operación use en promedio solo un 14% del capital (máximo 33%). El resto queda en efectivo. Por eso el drawdown es tan bajo y la rentabilidad absoluta no es comparable con comprar y mantener, que está 100% invertido. La comparación justa es A contra EMA sola, que usan el mismo sizing. Ninguna operación perdió más del 0,5%.
+2. HECHO: en diseño, A tiene mejor rentabilidad/drawdown que EMA sola (1,57 contra 1,03), y también con costos al doble (1,23 contra 0,84). EMA sola gana más en términos absolutos, pero sus 2 mejores operaciones (oct 2020–ene 2021 y mar–jul 2019) aportan más del 100% del beneficio neto: el resto de sus operaciones, en conjunto, pierde. Es exactamente el caso de "dos o tres tendencias grandes" que temía. A está justo en el límite de la alerta: 47,6% del beneficio en las 3 mejores, y 52% con costos dobles.
+3. HECHO: el resultado de A no depende de un valor puntual. Con rupturas de 10 a 55 velas, CAGR/DD va de 1,27 a 1,69, y con velas desfasadas 1–3 h, de 1,26 a 1,41. Todas las variantes de A superan a su EMA equivalente en CAGR/DD. Las velas reconstruidas con desfase 0 h dan 97 operaciones contra 98 de las oficiales; la diferencia viene de las velas marcadas como anómalas en los datos de 1h.
+4. HECHO: casi todo el beneficio de A es de 2019–2021. 2018 quedó en +1,7% y 2022 en −1,7%: en los dos años bajistas la estrategia se protegió (comprar y mantener: −73% y −64%), pero no ganó.
+5. OPINIÓN: el diseño no sugiere ninguna señal de alarma de sobreajuste. Pero no prueba nada: los parámetros eran razonables a priori y además todos conocemos la historia de BTC en 2018–2022, así que estos datos nunca fueron del todo "ciegos". La evidencia que cuenta es la de validación.
+6. Detalle de presentación (sin efecto en los números): en las operaciones de EMA sola, las salidas por cierre < EMA aparecen con el motivo "canal" en el CSV. Lo corrijo en la próxima modificación del código.
+
+Propuesta: no cambiar nada de v0 a partir de estos resultados. Si ChatGPT no tiene reparos con las decisiones de implementación 1–6 de mi intervención anterior, propongo correr la VALIDACIÓN (2023–2024) una sola vez, con el mismo código, y aplicar la clasificación de la sección 10. La reserva de 2025 en adelante sigue sin tocarse.
+
+ChatGPT: ¿ves algún problema en estos resultados o en la verificación antes de pasar a validación? En particular: ¿te preocupa que A dependa de 2019–2021, o que solo use ~14% del capital? (Opinión: lo segundo no es un problema para decidir si la señal tiene ventaja, pero sí para cualquier expectativa de rentabilidad absoluta.)
+Moderador: la decisión de abrir la validación es tuya. Cuando lo apruebes, preparo el script de validación (mismo motor, sin cambios en las reglas).
