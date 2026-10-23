@@ -135,3 +135,33 @@ Apruebo congelar la especificación v0 con estas aclaraciones. Siguiente paso: g
 Claude: incorporá estos ajustes a estrategia_A_v0.txt y después implementá el backtest. No presentes resultados hasta verificar el código y los costos.
 
 moderador: yo propongo que guarde en el repositorio de github los resultados así lod podemos ver y otro archivo en el repo con los logs de errores bien detallado también 
+
+Claude:
+Incorporo los dos ajustes de ChatGPT sin objeciones: bootstrap por bloques (bloques de 5 operaciones consecutivas, circular, 10.000 repeticiones, semilla fija; si hay menos de 30 operaciones no se calcula y el resultado es INCONCLUSO) y concentración del beneficio como alerta, no como rechazo. También el límite inferior del 95% (percentil 2,5).
+
+Lo que hice (sin resultados todavía, como pidió ChatGPT):
+- estrategia_A_v0.txt: especificación congelada completa, con las precisiones de ejecución de ChatGPT y los criterios de clasificación.
+- backtest/: descarga de datos oficiales de Binance (data.binance.vision, verificando el checksum de cada archivo), limpieza con registro de duplicados, huecos y velas con volumen 0, motor de simulación, referencias (EMA(200) sola y comprar y mantener), métricas y bootstrap.
+- backtest/verificacion.py: una segunda implementación de la estrategia, escrita aparte y sin compartir código con el motor. Sobre los datos reales se comparan TODAS las operaciones entre ambas; si no coinciden, el log lo marca como error.
+- tests/: 28 pruebas con datos sintéticos (no son resultados de mercado). Incluyen casos calculados a mano (stop con hueco de apertura, stop intravela, sizing que pierde exactamente 0,5% con costos incluidos, tope de capital, salida por canal, bloqueo por volumen 0) y la prueba anti-look-ahead: se alteran los datos posteriores a una fecha y se comprueba que indicadores, señales, operaciones y equity anteriores no cambian. Comprobé que la prueba detecta un error real: introduje a propósito una fuga de datos futuros en la EMA y otra en el stop, y las pruebas fallaron en ambos casos.
+- registro_experimentos.txt: registro de cada corrida, incluidas las descartadas.
+
+Pedido del moderador (resultados y logs en el repo): hay un workflow de GitHub Actions (.github/workflows/backtest_diseno.yml) que descarga los datos, corre las pruebas, corre el backtest SOLO en diseño (2018–2022) y guarda en el repo:
+- resultados/diseno_resumen.md (tabla de métricas, resultados por año, sensibilidad de desfases de velas y de velas de ruptura), resultados/diseno_operaciones_A.csv y _EMA.csv (cada operación), resultados/diseno_equity.csv y resultados/diseno_verificacion.md;
+- logs/errores.log (log detallado: cada duplicado, hueco, vela anómala, error con traceback completo), logs/tests.log (salida de las pruebas) y logs/ultima_corrida.txt;
+- datos/ (velas limpias usadas, para poder revisarlas a mano).
+Se ejecuta solo al subir cambios al código, o a mano desde la pestaña Actions → "Backtest diseño" → "Run workflow". Aunque algo falle, los logs se guardan igual.
+Hecho a declarar: desde el entorno donde trabajo no tengo acceso a los servidores de Binance, por eso no corrí el backtest con datos reales; lo corre GitHub Actions. No presento ningún número de mercado hasta que esa corrida exista y la haya revisado.
+El script no descarga nada posterior a 2022-12 y se detiene si encuentra datos posteriores: la validación sigue sin mirarse.
+
+Decisiones de implementación que la especificación no fijaba (las anoté en estrategia_A_v0.txt; ChatGPT, revisalas):
+1. EMA(200) sola usa el mismo stop de 2 × ATR y el mismo sizing, para que la comparación aísle solo la señal de entrada y salida.
+2. Tras un stop se puede volver a entrar en cuanto se cumpla de nuevo la condición de entrada (incluso al cierre de la misma vela).
+3. Una posición abierta al final del período se cierra al último cierre con costos.
+4. Exposición = % de velas en las que hubo posición en algún momento de la vela.
+5. Drawdown medido con la equity al cierre de cada vela (no con mínimos intravela).
+6. Cada período empieza con 10.000 USDT y sin posición heredada.
+
+Próximo paso: cuando corra el workflow, reviso logs/errores.log, compruebo que la verificación cruzada coincida y reviso a mano 3–5 operaciones contra datos/BTCUSDT-4h.csv. Recién entonces comento los números de diseño, sin tocar validación.
+
+ChatGPT: ¿algún reparo con las decisiones 1–6? En particular la 2: ¿preferís exigir una nueva ruptura "fresca" tras un stop? Si se cambia, sería v0.1 y quedaría registrado antes de ver ningún resultado.

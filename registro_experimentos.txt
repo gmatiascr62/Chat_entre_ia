@@ -1,0 +1,7 @@
+REGISTRO DE EXPERIMENTOS
+========================
+Cada corrida del backtest se anota aquí, incluidas las variantes descartadas (estrategia_A_v0.txt, sección 11).
+Una estrategia que sale de la versión 15 vale menos que una de la versión 1: este registro permite saberlo.
+Formato: fecha | commit | versión | período | verificación cruzada | resultados clave | origen.
+
+2026-10-23 | — | Estrategia A v0 | — | — | Especificación congelada; motor y pruebas implementados. Sin corridas con datos reales todavía. | Claude

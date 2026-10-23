@@ -1,0 +1,101 @@
+ESPECIFICACIÓN CONGELADA — ESTRATEGIA A v0
+==========================================
+Estado: congelada (aprobada por ChatGPT y el moderador en Leer.txt).
+Fuente de las reglas: debate en Leer.txt (intervenciones de Claude y ChatGPT).
+Es una HIPÓTESIS a probar. No es una recomendación de inversión.
+Cualquier cambio después de ver resultados obliga a declarar una versión nueva (v1, v2...)
+y los datos ya vistos pasan a ser datos de diseño.
+
+1. Mercado y datos
+- BTC/USDT spot, Binance. Solo compras (long-only). Sin apalancamiento.
+- Datos: velas públicas de https://data.binance.vision (archivos mensuales, verificados con su CHECKSUM SHA-256).
+- Temporalidad principal: velas oficiales de 4h de Binance (inicio 00:00 UTC).
+- Prueba de sensibilidad: velas de 4h reconstruidas desde velas de 1h con desfases de 0, 1, 2 y 3 horas.
+  Se informan todas; no se elige la más rentable.
+
+2. Períodos
+- Datos disponibles desde 2017-08-17 (inicio de BTCUSDT en Binance), usados solo para calentar indicadores.
+- Diseño:      2018-01-01 a 2022-12-31 (se opera desde la primera vela de 2018).
+- Validación:  2023-01-01 a 2024-12-31. No se mira hasta que el código y los costos estén verificados.
+- Reserva final: 2025-01-01 en adelante. Se usa una sola vez, al final.
+- Cada período se simula con capital inicial nuevo (10.000 USDT) y sin posición abierta heredada.
+  Los indicadores sí usan datos anteriores al inicio del período (es pasado; no hay look-ahead).
+
+3. Indicadores (calculados solo con velas cerradas)
+- EMA(200) del cierre: alfa = 2/(200+1), sembrada con la media simple de los primeros 200 cierres.
+- ATR(14) de Wilder: TR = máx(alto−bajo, |alto−cierre previo|, |bajo−cierre previo|); sembrado con la media simple
+  de los primeros 14 TR; luego ATR_t = (ATR_{t−1}·13 + TR_t)/14.
+- Máximo de ruptura: máximo de los ALTOS de las 20 velas anteriores (sin incluir la vela actual).
+- Mínimo de salida: mínimo de los BAJOS de las 10 velas anteriores (sin incluir la vela actual).
+
+4. Reglas (todas evaluadas al cierre de la vela t)
+- Entrada: sin posición, cierre_t > máximo de ruptura_t, cierre_t > EMA(200)_t, indicadores completos
+  y sin condición de no operar. Compra a la apertura de la vela t+1.
+- Stop-loss inicial: apertura_{t+1} − 2 × ATR(14)_t (ATR conocido al decidir la entrada). Fijo durante la operación.
+- Stop intravela, revisado desde la propia vela de entrada:
+  * si la vela abre en o por debajo del stop → venta a la apertura (hueco), no al precio del stop;
+  * si no, y el bajo toca el stop → venta al precio del stop.
+  En ambos casos se aplica deslizamiento en contra.
+- Salida por canal: cierre_t < mínimo de salida_t → venta a la apertura de la vela t+1.
+- Con posición larga y un único stop no hay ambigüedad de orden intravela: el stop siempre ocurre antes
+  que una salida por canal (que se decide al cierre). Supuesto conservador: si el stop se toca, se ejecuta.
+- Tras una salida (stop o canal) se puede volver a entrar si se cumple de nuevo la condición de entrada.
+- Fin del período: una posición abierta se cierra al cierre de la última vela, con costos.
+
+5. Tamaño de posición
+- Riesgo: 0,5% del capital (efectivo) al momento de entrar.
+- La pérdida por unidad si salta el stop incluye costos:
+  pérdida_unidad = (precio_entrada_con_desliz − stop_con_desliz) + comisión·precio_entrada_con_desliz
+                   + comisión·stop_con_desliz
+  cantidad = capital · 0,005 / pérdida_unidad
+- Tope: el costo total de la compra (incluida la comisión) no puede superar el efectivo disponible.
+  Nunca se usa apalancamiento.
+- Nota: si la vela abre por debajo del stop (hueco), la pérdida real puede superar el 0,5%.
+
+6. Costos
+- Escenario base: comisión 0,10% por lado + deslizamiento 0,05% por lado.
+- Escenario de estrés: comisión 0,20% por lado + deslizamiento 0,10% por lado (costos al doble).
+- Simplificación declarada: la comisión se descuenta en USDT (en Binance las compras la cobran en BTC
+  o en BNB). Efecto despreciable a estos efectos.
+- El efectivo fuera de mercado rinde 0%.
+
+7. Condiciones para no operar (datos)
+- Limpieza con procedimiento fijo y registrado en logs/errores.log: se eliminan timestamps duplicados (se
+  conserva la primera aparición) y se registran huecos, velas con volumen 0 y velas con OHLC inconsistente.
+  No se borran velas por su contenido.
+- Una vela es "anómala" si tiene volumen 0, OHLC inconsistente, o hay un hueco de datos justo antes de ella.
+- No se abren operaciones nuevas si alguna de las últimas 21 velas (la actual y las 20 anteriores) es anómala.
+  Las salidas y el stop siguen funcionando normalmente.
+
+8. Referencias (mismo motor, mismos costos, misma ejecución)
+- EMA(200) sola: entrada si cierre_t > EMA(200)_t sin posición; salida por canal reemplazada por
+  cierre_t < EMA(200)_t. Mismo stop de 2 × ATR, mismo sizing y mismas condiciones de no operar.
+- Comprar y mantener: compra con todo el efectivo en la primera apertura del período y venta al último cierre.
+
+9. Métricas que se informan
+- Rentabilidad neta, CAGR, drawdown máximo (equity a precio de cierre de cada vela), rentabilidad/drawdown
+  (CAGR / |DD máx|), número de operaciones, tasa de aciertos, factor de beneficio, expectativa neta por operación,
+  exposición (% de velas con posición), resultados por año, costos totales pagados.
+- Concentración: porcentaje del beneficio neto aportado por las 3 mejores operaciones (ALERTA si > 50%,
+  no es rechazo automático).
+- Bootstrap por bloques circular sobre la secuencia de resultados por operación (en orden temporal),
+  bloques de 5 operaciones, 10.000 repeticiones, semilla fija 12345. Se informa el percentil 2,5 de la
+  expectativa neta (límite inferior del intervalo del 95%).
+
+10. Criterios de clasificación (se aplican en VALIDACIÓN; en diseño solo se informan)
+- INCONCLUSA si hay menos de 30 operaciones (en ese caso tampoco se considera razonable el bootstrap).
+- RECHAZADA si la expectativa neta ≤ 0 o el factor de beneficio ≤ 1 con costos base.
+- CANDIDATA (para paper trading, no para dinero real) solo si se cumple todo:
+  a) expectativa neta > 0 y factor de beneficio > 1,2 con costos base Y con costos al doble;
+  b) límite inferior del 95% (bootstrap por bloques) de la expectativa neta > 0;
+  c) mejor rentabilidad/drawdown que la referencia EMA(200) sola con costos base.
+- Cualquier otro caso: INCONCLUSA.
+- La concentración del beneficio se informa y se analiza, pero no decide la clasificación.
+
+11. Registro y verificación
+- Toda corrida se anota en registro_experimentos.txt (fecha, commit, versión, período, resultados clave),
+  incluidas las variantes descartadas.
+- Antes de mirar validación: pruebas automáticas (tests/), incluida una prueba anti-look-ahead que altera los
+  datos futuros y comprueba que nada anterior cambia, y una reimplementación independiente que recalcula las
+  primeras operaciones reales y debe coincidir con el motor.
+- Sensibilidad (solo para ver robustez, no para elegir): ruptura de 10, 15, 20, 30, 40 y 55 velas.

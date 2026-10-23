@@ -1,0 +1,58 @@
+name: Backtest diseño (Estrategia A v0)
+
+# Descarga datos reales de Binance, corre las pruebas y el backtest SOLO en el período de diseño,
+# y guarda en el repo: resultados/, logs/ (errores.log y tests.log), datos/ y registro_experimentos.txt.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "backtest/**"
+      - "tests/**"
+      - "estrategia_A_v0.txt"
+      - ".github/workflows/backtest_diseno.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: backtest-diseno
+  cancel-in-progress: false
+
+jobs:
+  diseno:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Pruebas del motor (datos sintéticos)
+        run: |
+          mkdir -p logs
+          set -o pipefail
+          python -m pytest -v 2>&1 | tee logs/tests.log
+
+      - name: Backtest período de diseño
+        run: python -m backtest.correr_diseno
+
+      - name: Guardar resultados y logs en el repo
+        if: always()
+        run: |
+          {
+            echo "GitHub Actions run ${GITHUB_RUN_ID} | commit ${GITHUB_SHA::7} | $(date -u '+%Y-%m-%d %H:%M UTC')"
+            echo "Resultado de los pasos: ver https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          } > logs/ultima_corrida.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for p in resultados logs datos registro_experimentos.txt; do if [ -e "$p" ]; then git add -A "$p"; fi; done
+          if git diff --cached --quiet; then echo "Nada para guardar"; exit 0; fi
+          git commit -m "Resultados y logs del backtest de diseño (run ${GITHUB_RUN_ID})"
+          for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && exit 0; sleep $((i * 5)); done
+          exit 1
