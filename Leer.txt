@@ -255,3 +255,41 @@ La clasificación final debe aplicar los criterios fijados sin reinterpretarlos 
 
 Claude: podés preparar y ejecutar esa única validación bajo estas condiciones. No es autorización para operar con dinero real ni una afirmación de rentabilidad futura.
 
+
+Claude:
+La validación única 2023–2024 ya corrió (GitHub Actions run 40022351488). Resultado según los criterios fijados: INCONCLUSA.
+
+Primero, los controles del proceso. Todos se cumplieron:
+- Motor: el hash de cada archivo (datos, motor, métricas, verificación) coincide con el commit congelado f7b907e (logs/validacion_errores.log). Pruebas: 29/29.
+- Datos: se descargaron 89 archivos, de 2017-08 a 2024-12, y ninguno posterior; la reserva 2025+ sigue sin tocar. Checksums de Binance y sha256 de cada CSV en resultados/validacion_checksums.txt. No hay velas anómalas dentro de 2023–2024; los 9 huecos registrados son todos de 2017–2020.
+- Verificación cruzada: las 53 operaciones coinciden entre motor y reimplementación.
+
+Criterios (resultados/validacion_resumen.md):
+| Criterio | Valor | ¿Cumple? |
+| Operaciones ≥ 30 | 53 | sí |
+| Expectativa > 0 y FB > 1,2, costos base | +0,52% / 2,82 | sí |
+| Expectativa > 0 y FB > 1,2, costos x2 | +0,39% / 2,35 | sí |
+| b) Bootstrap ops p1 > 0 | −0,055% | no |
+| c) CAGR/DD de A > EMA sola (costos base) | 2,37 vs 2,42 | no |
+→ No se cumplen b) ni c) → INCONCLUSA (no RECHAZADA, porque la expectativa y el FB son positivos).
+
+HECHOS adicionales:
+- A: +30,3% en 2 años, DD −5,95%, 53 operaciones (33 por canal, 20 por stop), 34% de aciertos. Ninguna operación perdió más del 0,5%. Uso del capital: mediana 18%, máximo 39%.
+- EMA(200) sola: +39,0%, DD −7,41%, CAGR/DD 2,42. Con costos dobles, A y EMA quedan prácticamente empatadas (1,74 contra 1,73).
+- Comprar y mantener: +464%, DD −30%. El período fue muy alcista (2023: +155%, 2024: +121%). Por el sizing al 0,5% de riesgo, ninguna de las dos estrategias está diseñada para capturar eso, así que la comparación absoluta no aplica (ya lo habíamos acordado).
+- Concentración: las 3 mejores operaciones de A aportan el 85% del beneficio neto (alerta). Las de EMA sola, el 103%.
+- Valores exactos del bootstrap de A: p2,5 = +0,014%, p1 = −0,055%. Temporal p1 = −0,002% diario (informativo). Autocorrelación de las 53 operaciones: lag 1 = +0,11.
+- El cambio de umbral NO decidió el resultado. Con el percentil 2,5 la condición b) habría pasado (+0,014%), pero c) igual falla, así que la clasificación sería INCONCLUSA con cualquiera de los dos umbrales. Lo aclaro porque el umbral se cambió poco antes de abrir la validación.
+
+Lectura (OPINIÓN, separada de los hechos):
+1. Fuera de muestra, la Estrategia A tuvo resultados positivos y robustos a costos dobles, pero no se distingue de dos cosas: del ruido (con 53 operaciones el bootstrap no descarta expectativa ≤ 0), y de la regla más simple (EMA(200) sola, con la misma ejecución y el mismo sizing, da lo mismo o algo mejor). La ruptura de 20 velas, que era lo que A agregaba, no mostró ninguna ventaja medible en validación. En diseño sí parecía aportar (1,57 contra 1,03), y esa diferencia desapareció fuera de muestra. Es la razón principal por la que no la consideraría candidata, más allá del bootstrap.
+2. Lo único consistente en diseño y en validación es lo que tienen en común A y EMA sola: estar fuera del mercado cuando el precio está debajo de la EMA(200), con stop de 2 × ATR y riesgo de 0,5%. Esto protegió en 2018 y 2022, y en 2023–2024 dio un resultado positivo pero muy inferior a comprar y mantener. Es una hipótesis para una eventual versión nueva, no una conclusión.
+3. Como acordamos, no se ajusta nada sobre estos datos. Cualquier variante (por ejemplo, quedarse solo con el filtro EMA, o cambiar el sizing) sería v1, y 2023–2024 pasaría a ser dato de diseño.
+
+Propuesta para cerrar esta etapa (decide el moderador):
+- Registrar la Estrategia A v0 como INCONCLUSA. No pasa a paper trading y no hay ninguna recomendación de dinero real.
+- No usar la reserva 2025+ para "reintentar" A v0 buscando otro veredicto. Reservarla para una eventual v1 especificada y congelada de antemano. Con ~20–25 operaciones por año, es probable que esa muestra tampoco alcance las 30 operaciones necesarias: hay que tenerlo en cuenta antes de diseñar v1.
+- Si se sigue, la pregunta de fondo para v1 es si el filtro EMA(200) con este sizing aporta algo frente a comprar y mantener ajustado por riesgo (por ejemplo, comprar y mantener con la misma exposición media). Esa comparación no estaba en v0.
+
+ChatGPT: ¿coincidís con la clasificación y con la lectura del punto 1? ¿Ves algo en el proceso de validación que la invalide?
+Moderador: ¿cerramos la Estrategia A v0 como INCONCLUSA? ¿Querés que sigamos con una v1 o damos por terminado el debate?
