@@ -83,3 +83,35 @@ Me parece insuficiente usar solo 30 operaciones y factor de beneficio (PF) de 1,
 - Congelar reglas antes de correr el test. Si se modifican tras ver resultados, esos datos pasan a ser de diseño y hace falta una nueva muestra fuera de muestra.
 
 Conclusión: acepto la Estrategia A como candidata simple para investigar, no como recomendación de compra ni como estrategia aprobada. Dejaría el order book fuera, implementaría primero el backtest con ejecución y costos realistas, y decidiría solo a partir de resultados reproducibles. Claude, revisá especialmente si estos criterios de rechazo son razonables y si falta algún sesgo importante en el diseño del backtest.
+
+Claude:
+Acepto casi todas las precisiones de ejecución: stop con hueco de apertura ejecutado a la apertura, canal de salida sin la vela actual, supuesto conservador intravela, sizing que incluya costos y limpieza de datos con un procedimiento fijo y registrado. Las incorporo a la especificación. Respondo sobre los criterios de rechazo y agrego los sesgos que creo que faltan.
+
+1) Criterios de rechazo: de acuerdo en endurecerlos, pero hay que ponerles números
+"Una cantidad de operaciones suficiente" no es una regla que se pueda aplicar. Propongo fijar esto antes de correr nada:
+- Tres resultados posibles, no dos: RECHAZADA, INCONCLUSA o CANDIDATA. Con menos de 30 operaciones en validación, el resultado es INCONCLUSO automáticamente, nunca CANDIDATO.
+- CANDIDATA exige todo esto en validación:
+  a) factor de beneficio > 1,2 y expectativa neta > 0, con costos base y con costos al doble (adopto tu propuesta);
+  b) intervalo de confianza: remuestreo (bootstrap) de los resultados por operación, 10.000 repeticiones; el percentil 5 de la expectativa neta debe ser > 0;
+  c) mejor rentabilidad/drawdown que la referencia EMA(200) sola, con la misma ejecución, costos y sizing;
+  d) que no más del 50% del beneficio neto venga de las 3 mejores operaciones (para detectar el problema de "dos o tres tendencias grandes" que mencioné antes).
+- Cualquier otro caso con expectativa ≤ 0 o PF ≤ 1 → RECHAZADA. Lo intermedio → INCONCLUSA.
+Opinión: con 4h y una muestra de validación de 2 años, es probable que (b) no se cumpla aunque la estrategia tenga algo de ventaja. Prefiero eso a aprobar algo por ruido; si pasa, la salida honesta es "inconclusa" y no ajustar reglas para que pase.
+
+2) Sesgos que faltan en el diseño del backtest
+- Pruebas múltiples: cada variante probada aumenta la probabilidad de encontrar algo bueno por azar. Propongo un registro de experimentos (archivo en el repo) donde se anote cada corrida: fecha, versión de las reglas, período usado y resultado. Las variantes descartadas también se registran. Una estrategia que sale de la versión 15 vale menos que una de la versión 1.
+- Alineación de velas: las velas de 4h de Binance empiezan a las 00:00 UTC. Ese desfase es un parámetro oculto. Prueba de robustez: reconstruir velas de 4h desde velas de 1h con desfases de 0, 1, 2 y 3 horas. Si el resultado cambia mucho según el desfase, no es robusto.
+- Calentamiento de indicadores: EMA(200) en 4h necesita historia previa. Permitir que use datos anteriores al inicio de cada período (es pasado, no hay look-ahead), pero no contar operaciones hasta que los indicadores estén completos.
+- Régimen del período de validación: hay que mirar en los datos cómo se comportó BTC en 2023–2024 antes de interpretar resultados. Si fue un período mayormente alcista (hipótesis a verificar), cualquier estrategia long-only se va a ver bien en términos absolutos. Por eso el criterio (c) compara contra EMA sola y no contra cero.
+- ETH no es una prueba independiente: está muy correlacionado con BTC. Un buen resultado en ETH es evidencia débil; un mal resultado sí es una señal de alerta.
+- Selección de activos: elegimos BTC y ETH porque hoy son los más grandes. Es razonable para empezar, pero conviene declararlo como limitación y no generalizar a "cripto".
+- Calidad de datos: velas con mechas anómalas pueden disparar stops que en la práctica no se habrían ejecutado (o sí). Propongo contrastar al menos un período con datos de otro exchange y registrar las diferencias.
+- Efectivo fuera de mercado: asumir rendimiento 0 para el USDT inmovilizado y decirlo explícitamente.
+- Verificación del código contra look-ahead: prueba automática que modifica los datos futuros después de una fecha t y comprueba que todas las señales hasta t no cambian.
+
+3) Propuesta de siguiente paso
+- Congelar la "Especificación Estrategia A v0" con las reglas de mi intervención anterior más las precisiones de ChatGPT y estos criterios, en un archivo aparte del repo (por ejemplo, estrategia_A_v0.txt), para que este chat no sea la única fuente de las reglas.
+- Implementar el backtest con la referencia EMA sola en el mismo motor, correr solo en el período de diseño y verificar el código primero (operaciones a mano en 3–5 casos, prueba anti look-ahead) antes de mirar la validación.
+
+Moderador: ¿aprobás congelar la especificación v0 y pasar a implementar el backtest?
+ChatGPT: ¿estás de acuerdo con los tres resultados posibles y los umbrales (b) y (d), o los cambiarías? ¿Ves algún problema en reconstruir las velas de 4h desde 1h para la prueba de desfases?
