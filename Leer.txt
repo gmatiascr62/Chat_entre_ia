@@ -211,3 +211,35 @@ Leí los resultados de diseño y la verificación. Mi decisión es: todavía NO 
 
 Por tanto, Claude: corregí el etiquetado de salidas, agregá la revisión manual pendiente y dejá inequívocamente documentado el método y el umbral del bootstrap. Volvé a correr tests y backtest de diseño y compará los artefactos con la corrida anterior. Si los resultados y operaciones no cambian salvo el etiquetado, y todo queda registrado, entonces sí apruebo abrir la validación 2023–2024 una sola vez, sin modificar reglas. La reserva 2025–actualidad sigue cerrada. No presentar estos resultados como recomendación de inversión.
 
+
+Claude:
+Hice los controles pendientes. Todo está en main.
+
+1. Etiqueta: las salidas de EMA(200) sola ahora dicen "cruce_ema", y hay una prueba nueva que lo controla (29 pruebas, todas pasan).
+
+2. Re-ejecución y comparación con la corrida anterior (run 40021170910 contra 40013635868), con diff de los archivos:
+- resultados/diseno_operaciones_A.csv y datos/: idénticos byte a byte.
+- resultados/diseno_operaciones_EMA.csv: idéntico salvo la etiqueta.
+- resultados/diseno_equity.csv: idéntico.
+- Las 25 filas de métricas de diseno_resumen.md y la tabla por año: idénticas en todas las columnas que ya existían. Solo se agregan las columnas nuevas de bootstrap.
+- logs/errores.log: los mismos 227 avisos; solo cambian las marcas de hora.
+- Verificación cruzada: otra vez COINCIDEN (98/98).
+Código congelado: commit f7b907e, anotado en registro_experimentos.txt. Las corridas ahora anotan también los análisis de sensibilidad, marcados como "no usados para elegir".
+
+3. Revisión manual adicional. Ahora son 4 operaciones revisadas a mano en total (1, 4 y estas dos):
+- Primer stop intravela (señal 2018-09-01 12:00): stop recalculado a mano 6.964,80, igual al del motor. La vela 2018-09-05 08:00 abre en 7.367,83, por encima del stop, y su mínimo de 6.909 lo toca, así que se vende al stop con deslizamiento (6.961,32). Resultado −52,16 USDT, exactamente el 0,5% del capital al entrar.
+- Operación de mayor ganancia (señal 2020-07-21 04:00): salida por canal. El cierre de 2020-08-21 20:00 (11.531,34) queda por debajo del mínimo de las 10 velas previas (11.605,42); se vende a la apertura siguiente, y ningún mínimo intermedio tocó el stop. Resultado +911,92 USDT. Usó el 32,6% del capital.
+En las dos, la cantidad comprada recalculada a mano coincide con la del motor (10 decimales). No hubo ningún caso de stop con hueco de apertura en diseño, así que ese caso solo está probado con datos sintéticos.
+
+4. Bootstrap. Respondo a los dos pedidos de ChatGPT.
+- Qué se remuestrea y por qué (ya documentado en estrategia_A_v0.txt, sección 9): el resultado neto de cada operación sobre el capital al entrar, en orden temporal, en bloques circulares de 5 operaciones. Lo elegí porque el criterio es sobre la expectativa POR OPERACIÓN. El bootstrap temporal de ChatGPT (bloques de 20 días de retornos diarios de la equity) mide otra cosa, el retorno medio por día con los días sin posición incluidos. Lo agregué como dato informativo y no decide.
+- Validación del método (resultados/validacion_bootstrap.md; backtest/validar_bootstrap.py, datos sintéticos con media verdadera 0): HECHO, el método es demasiado optimista con muestras chicas. Con el percentil 2,5, la tasa de "ventaja falsa" (límite inferior > 0 sin ventaja real) va del 3,5% al 11,6% según tamaño y autocorrelación, contra el 2,5% nominal. Para el caso esperado en validación (~40 operaciones, sin autocorrelación) da ~5%. Con el percentil 1 da ~2,7%.
+- Autocorrelación medida en las 98 operaciones de diseño: lag 1 = −0,14 (no significativa: ±0,20). Por eso tomo como referencia el caso sin autocorrelación.
+- Umbral único que PROPONGO: percentil 1 del bootstrap por bloques de operaciones. Corrige el sesgo medido y deja la tasa de falsos positivos cerca del 2,5% que pretendíamos. Lo elegí con datos sintéticos, no mirando resultados de mercado. Quedó registrado en estrategia_A_v0.txt como cambio PROPUESTO, pendiente de tu conformidad. Si preferís quedarte con el percentil 2,5, también es una opción válida, pero entonces hay que saber que en la práctica equivale a ~5% de error y no a 2,5%.
+- Dato de diseño, informativo: el p1 de A da +0,13% con costos base y +0,08% con costos dobles; el de EMA sola da −0,07%. El bootstrap temporal p1 es positivo en A, pero casi cero (+0,005% diario).
+
+5. De acuerdo con los puntos 4 y 5 de ChatGPT: la sensibilidad no demuestra robustez, solo descarta que el resultado dependa de un valor puntual. Todo resultado se presenta junto con el uso medio de ~14% del capital y la concentración en 2019–2021. Nada de esto es una recomendación de inversión.
+
+Pendiente antes de abrir la validación:
+ChatGPT: ¿aceptás el percentil 1 como umbral único de la condición b)? Si respondés que sí, la validación se corre una sola vez con el commit f7b907e sin tocar nada. Si preferís el percentil 2,5, cambio una sola línea, vuelvo a congelar y lo registro.
+Moderador: con esa respuesta de ChatGPT, ¿aprobás correr la validación 2023–2024?
